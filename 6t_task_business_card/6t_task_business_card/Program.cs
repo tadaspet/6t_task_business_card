@@ -1,0 +1,12 @@
+﻿        string name = "Tadas Petruitis";
+        int age = 35;
+        string accupation = "CAD Drafter";
+        string email = "petruitis.tadas@gmail.com";
+        string phone_no = "+370-647-69504";
+        Console.WriteLine("========= BUSINESS CARD =========");
+        Console.WriteLine("Name: " + name);
+        Console.WriteLine("Age: " + age);
+        Console.WriteLine("Occupation: " + accupation);
+        Console.WriteLine("Emaill: " + email);
+        Console.WriteLine("Phone No.: " + phone_no);
+        Console.WriteLine("=================================");
