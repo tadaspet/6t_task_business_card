@@ -1,0 +1,13 @@
+﻿string text = "Kompiuteris viduryje pievos";
+Console.WriteLine("Task text: " + text);
+string stringText = text.Substring(0,11);
+Console.WriteLine(".Subtring(0,11): " + stringText);
+Console.WriteLine(".Replace('i','y'): " + text.Replace('i','y'));
+int subText = text.IndexOf('v');
+Console.WriteLine(".IndexOf 'v': " + subText);
+string text2 = text.Substring(11,10);
+Console.WriteLine(".Substring(11,10): " + text2);
+Console.WriteLine(".Trim of .Substring(11,10): " + text2.Trim());
+Console.WriteLine(".ToLowerInvariant text: " + text.ToLowerInvariant());
+Console.WriteLine(".ToUpperInvariant: " + text2.ToUpperInvariant());
+Console.WriteLine($"{text}{text2}");
