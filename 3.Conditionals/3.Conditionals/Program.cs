@@ -114,18 +114,18 @@
 
 #region no2.1 task
 Console.WriteLine("===========================");
-Console.WriteLine("Please, input number to check: ");
-string no3 = Console.ReadLine();
-int inputNo3 = Convert.ToInt32(no3);
-Console.WriteLine($"Input number is: {inputNo3}");
-int evenNo2 = inputNo3 % 2;
-int fiveNo2 = inputNo3 % 5;
-if (evenNo2 == 0)
-    Console.WriteLine("Number is dividing by 2");
-else if (fiveNo2 == 0)
-    Console.WriteLine("Number is divinding by 5");
-else
-    Console.WriteLine("Number is not dividing by 2 or 5");
+//Console.WriteLine("Please, input number to check: ");
+//string no3 = Console.ReadLine();
+//int inputNo3 = Convert.ToInt32(no3);
+//Console.WriteLine($"Input number is: {inputNo3}");
+//int evenNo2 = inputNo3 % 2;
+//int fiveNo2 = inputNo3 % 5;
+//if (evenNo2 == 0)
+//    Console.WriteLine("Number is dividing by 2");
+//else if (fiveNo2 == 0)
+//    Console.WriteLine("Number is divinding by 5");
+//else
+//    Console.WriteLine("Number is not dividing by 2 or 5");
 #endregion
 
 
