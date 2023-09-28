@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>_8.Testing_UNIT</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
+    <PackageReference Include="coverlet.collector" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\4.Switch-examples\4.Switch-examples\4.Switch-examples.csproj" />
+    <ProjectReference Include="..\..\5.CHAR_array\5.CHAR_array\5.CHAR_array.csproj" />
+    <ProjectReference Include="..\..\6.While\6.While\6.While.csproj" />
+    <ProjectReference Include="..\..\7.Methods\7.Methods\7.Methods.csproj" />
+    <ProjectReference Include="..\..\8.Unit_Testing_Tasks\8.Unit_Testing_Tasks\8.Kalkuliuok.csproj" />
+    <ProjectReference Include="..\ConsoleApp1\3.Conditionlas_IF.csproj" />
+  </ItemGroup>
+
+</Project>

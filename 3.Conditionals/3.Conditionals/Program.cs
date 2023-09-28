@@ -113,7 +113,7 @@
 
 
 #region no2.1 task
-Console.WriteLine("===========================");
+//Console.WriteLine("===========================");
 //Console.WriteLine("Please, input number to check: ");
 //string no3 = Console.ReadLine();
 //int inputNo3 = Convert.ToInt32(no3);

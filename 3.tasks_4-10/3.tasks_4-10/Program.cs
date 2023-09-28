@@ -42,145 +42,145 @@
 
 
 #region No 6
-Console.WriteLine("=======TASK 6=======");
-int[] prices = new int[7] { 1200, 150, 400, 140, 130, 100, 120 };
-string[] texts = new string[7] { "Kompiuteris", "Pakrovejas", "Monitorius", "Pele", "Klaviatura", "Kamera", "Laidai" };
-Console.WriteLine("Isirinkite 3 prekiu krepseli is zemiau parodytu 7 produktu:");
-Console.WriteLine($"1.{texts[0]} - {prices[0]}$;\n2.{texts[1]} - {prices[1]}$;\n3.{texts[2]} - {prices[2]}$;\n4.{texts[3]} - {prices[3]}$;\n5.{texts[4]} - {prices[4]}$;\n6.{texts[5]} - {prices[5]}$;\n7.{texts[6]} - {prices[6]}$;");
-Console.WriteLine("Iveskite 3 prekiu numerius:");
-string shop1 = Console.ReadLine();
-string shop2 = Console.ReadLine();
-string shop3 = Console.ReadLine();
-int sel1 = Convert.ToInt32(shop1);
-int sel2 = Convert.ToInt32(shop2);
-int sel3 = Convert.ToInt32(shop3);
-bool outRange = ((sel1 < 1 || sel2 < 1 || sel3 < 1) || (sel1 > 7 || sel2 > 7 || sel3 > 7));
-bool equal3 = (sel1 == sel2) && (sel2 == sel3) && (sel1 == sel3);
-bool equals12 = (sel1 == sel2 && sel1 != sel3);
-bool equals23 = (sel2 == sel3 && sel2 != sel1);
-bool equals13 = (sel1 == sel3 && sel1 != sel2);
-bool unequal = ((sel1 != sel2) && (sel1 != sel3) && (sel2 != sel3));
-if (equal3 && !outRange)
-{
-    double subTotal33 = (prices[sel1 - 1] * 3);
-    double subTotal3 = (prices[sel1 - 1] * 3) * .85;
-    double dis3 = subTotal3 * .1;
-    double Total3 = subTotal3 - dis3;
-    Console.WriteLine("Jus pasirinkote 3 vienodas prekes:");
-    Console.WriteLine($"1.{texts[sel1 - 1]} - {prices[sel1-1]}$,\n2.{texts[sel1 - 1]} - {prices[sel1 - 1]}$,\n3.{texts[sel1 - 1]} - {prices[sel1 - 1]}$.");
-    Console.WriteLine($"Bendra suma: {subTotal33}$.");
-    Console.WriteLine($"Jums galioja akcija 3 vienodoms prekems!\nSuma su %15 nuolaida: {subTotal3}$.");
-    Console.WriteLine("Ar turite lojalumo kortele? (Taip/Ne)");
-    string loj1 = Console.ReadLine();
-    if (loj1 == "Taip")
-    {
-        Console.WriteLine($"Lojalumo 10% nuolaida: {dis3}$.");
-        Console.WriteLine($"Jusu moketina suma: {Total3}$.");
-    }
-    else if (loj1 == "Ne")
-    {
-        Console.WriteLine($"Jums neprytaikyta 10% lojalumo nuolaida: {dis3}$.");
-        Console.WriteLine($"Jusu moketina suma: {subTotal3}$.");
-    }
-}
-if (equals12 && !outRange)
-{
-    double subTotal23 = ((2 * prices[sel1 - 1]) + prices[sel3 - 1]);
-    double dis2 = (2 * prices[sel1 - 1]) * .1;
-    double subTotal2 = ((2 * prices[sel1 - 1]) + prices[sel3 - 1]) - dis2;
-    double disTotal2 = subTotal2 * 0.1;
-    double Total2 = subTotal2 - disTotal2;
-    Console.WriteLine("Jus pasirinkote 2 vienodas prekes:");
-    Console.WriteLine($"1.{texts[sel1 - 1]} - {prices[sel1 - 1]}$,\n2.{texts[sel2 - 1]} - {prices[sel2 - 1]}$,\n3.{texts[sel3 - 1]} - {prices[sel3 - 1]}$.");
-    Console.WriteLine($"Bendra suma: {subTotal23}$.");
-    Console.WriteLine($"Jums galioja akcija 2 vienodoms prekems!\nSuma su %10 nuolaida 2 pirmoms prekems: {subTotal2}$.");
-    Console.WriteLine("Ar turite lojalumo kortele? (Taip/Ne)");
-    string loj1 = Console.ReadLine();
-    if (loj1 == "Taip")
-    {
-        Console.WriteLine($"Lojalumo 10% nuolaida: {disTotal2}$.");
-        Console.WriteLine($"Jusu moketina suma: {Total2}$.");
-    }
-    else if (loj1 == "Ne")
-    {
-        Console.WriteLine($"Jums neprytaikyta 10% lojalumo nuolaida: {disTotal2}$.");
-        Console.WriteLine($"Jusu moketina suma: {subTotal2}$.");
-    }
-}
-if (equals23 && !outRange)
-{
-    double subTotal22 = ((2 * prices[sel2 - 1]) + prices[sel1 - 1]);
-    double dis2 = (2 * prices[sel2 - 1]) * .1;
-    double subTotal2 = ((2 * prices[sel2 - 1]) + prices[sel1 - 1]) - dis2;
-    double disTotal2 = subTotal2 * 0.1;
-    double Total2 = subTotal2 - disTotal2;
-    Console.WriteLine("Jus pasirinkote 2 vienodas prekes:");
-    Console.WriteLine($"1.{texts[sel1 - 1]} - {prices[sel1 - 1]}$,\n2.{texts[sel2 - 1]} - {prices[sel2 - 1]}$,\n3.{texts[sel3 - 1]} - {prices[sel3 - 1]}$.");
-    Console.WriteLine($"Bendra suma: {subTotal22}$.");
+//Console.WriteLine("=======TASK 6=======");
+//int[] prices = new int[7] { 1200, 150, 400, 140, 130, 100, 120 };
+//string[] texts = new string[7] { "Kompiuteris", "Pakrovejas", "Monitorius", "Pele", "Klaviatura", "Kamera", "Laidai" };
+//Console.WriteLine("Isirinkite 3 prekiu krepseli is zemiau parodytu 7 produktu:");
+//Console.WriteLine($"1.{texts[0]} - {prices[0]}$;\n2.{texts[1]} - {prices[1]}$;\n3.{texts[2]} - {prices[2]}$;\n4.{texts[3]} - {prices[3]}$;\n5.{texts[4]} - {prices[4]}$;\n6.{texts[5]} - {prices[5]}$;\n7.{texts[6]} - {prices[6]}$;");
+//Console.WriteLine("Iveskite 3 prekiu numerius:");
+//string shop1 = Console.ReadLine();
+//string shop2 = Console.ReadLine();
+//string shop3 = Console.ReadLine();
+//int sel1 = Convert.ToInt32(shop1);
+//int sel2 = Convert.ToInt32(shop2);
+//int sel3 = Convert.ToInt32(shop3);
+//bool outRange = ((sel1 < 1 || sel2 < 1 || sel3 < 1) || (sel1 > 7 || sel2 > 7 || sel3 > 7));
+//bool equal3 = (sel1 == sel2) && (sel2 == sel3) && (sel1 == sel3);
+//bool equals12 = (sel1 == sel2 && sel1 != sel3);
+//bool equals23 = (sel2 == sel3 && sel2 != sel1);
+//bool equals13 = (sel1 == sel3 && sel1 != sel2);
+//bool unequal = ((sel1 != sel2) && (sel1 != sel3) && (sel2 != sel3));
+//if (equal3 && !outRange)
+//{
+//    double subTotal33 = (prices[sel1 - 1] * 3);
+//    double subTotal3 = (prices[sel1 - 1] * 3) * .85;
+//    double dis3 = subTotal3 * .1;
+//    double Total3 = subTotal3 - dis3;
+//    Console.WriteLine("Jus pasirinkote 3 vienodas prekes:");
+//    Console.WriteLine($"1.{texts[sel1 - 1]} - {prices[sel1-1]}$,\n2.{texts[sel1 - 1]} - {prices[sel1 - 1]}$,\n3.{texts[sel1 - 1]} - {prices[sel1 - 1]}$.");
+//    Console.WriteLine($"Bendra suma: {subTotal33}$.");
+//    Console.WriteLine($"Jums galioja akcija 3 vienodoms prekems!\nSuma su %15 nuolaida: {subTotal3}$.");
+//    Console.WriteLine("Ar turite lojalumo kortele? (Taip/Ne)");
+//    string loj1 = Console.ReadLine();
+//    if (loj1 == "Taip")
+//    {
+//        Console.WriteLine($"Lojalumo 10% nuolaida: {dis3}$.");
+//        Console.WriteLine($"Jusu moketina suma: {Total3}$.");
+//    }
+//    else if (loj1 == "Ne")
+//    {
+//        Console.WriteLine($"Jums neprytaikyta 10% lojalumo nuolaida: {dis3}$.");
+//        Console.WriteLine($"Jusu moketina suma: {subTotal3}$.");
+//    }
+//}
+//if (equals12 && !outRange)
+//{
+//    double subTotal23 = ((2 * prices[sel1 - 1]) + prices[sel3 - 1]);
+//    double dis2 = (2 * prices[sel1 - 1]) * .1;
+//    double subTotal2 = ((2 * prices[sel1 - 1]) + prices[sel3 - 1]) - dis2;
+//    double disTotal2 = subTotal2 * 0.1;
+//    double Total2 = subTotal2 - disTotal2;
+//    Console.WriteLine("Jus pasirinkote 2 vienodas prekes:");
+//    Console.WriteLine($"1.{texts[sel1 - 1]} - {prices[sel1 - 1]}$,\n2.{texts[sel2 - 1]} - {prices[sel2 - 1]}$,\n3.{texts[sel3 - 1]} - {prices[sel3 - 1]}$.");
+//    Console.WriteLine($"Bendra suma: {subTotal23}$.");
+//    Console.WriteLine($"Jums galioja akcija 2 vienodoms prekems!\nSuma su %10 nuolaida 2 pirmoms prekems: {subTotal2}$.");
+//    Console.WriteLine("Ar turite lojalumo kortele? (Taip/Ne)");
+//    string loj1 = Console.ReadLine();
+//    if (loj1 == "Taip")
+//    {
+//        Console.WriteLine($"Lojalumo 10% nuolaida: {disTotal2}$.");
+//        Console.WriteLine($"Jusu moketina suma: {Total2}$.");
+//    }
+//    else if (loj1 == "Ne")
+//    {
+//        Console.WriteLine($"Jums neprytaikyta 10% lojalumo nuolaida: {disTotal2}$.");
+//        Console.WriteLine($"Jusu moketina suma: {subTotal2}$.");
+//    }
+//}
+//if (equals23 && !outRange)
+//{
+//    double subTotal22 = ((2 * prices[sel2 - 1]) + prices[sel1 - 1]);
+//    double dis2 = (2 * prices[sel2 - 1]) * .1;
+//    double subTotal2 = ((2 * prices[sel2 - 1]) + prices[sel1 - 1]) - dis2;
+//    double disTotal2 = subTotal2 * 0.1;
+//    double Total2 = subTotal2 - disTotal2;
+//    Console.WriteLine("Jus pasirinkote 2 vienodas prekes:");
+//    Console.WriteLine($"1.{texts[sel1 - 1]} - {prices[sel1 - 1]}$,\n2.{texts[sel2 - 1]} - {prices[sel2 - 1]}$,\n3.{texts[sel3 - 1]} - {prices[sel3 - 1]}$.");
+//    Console.WriteLine($"Bendra suma: {subTotal22}$.");
 
-    Console.WriteLine($"Jums galioja akcija 2 vienodoms prekems!\nSuma su %10 nuolaida: {subTotal2}$.");
-    Console.WriteLine("Ar turite lojalumo kortele? (Taip/Ne)");
-    string loj1 = Console.ReadLine();
-    if (loj1 == "Taip")
-    {
-        Console.WriteLine($"Lojalumo 10% nuolaida: {disTotal2}$.");
-        Console.WriteLine($"Jusu moketina suma: {Total2}$.");
-    }
-    else if (loj1 == "Ne")
-    {
-        Console.WriteLine($"Jums neprytaikyta 10% lojalumo nuolaida: {disTotal2}$.");
-        Console.WriteLine($"Jusu moketina suma: {subTotal2}$.");
-    }
-}
-if (equals13 && !outRange)
-{
-    double subTotal21 = ((2 * prices[sel1 - 1]) + prices[sel2 - 1]);
-    double dis2 = (2 * prices[sel1 - 1]) * .1;
-    double subTotal2 = ((2 * prices[sel1 - 1]) + prices[sel2 - 1]) - dis2;
-    double disTotal2 = subTotal2 * 0.1;
-    double Total2 = subTotal2 - disTotal2;
-    Console.WriteLine("Jus pasirinkote 2 vienodas prekes:");
-    Console.WriteLine($"1.{texts[sel1 - 1]} - {prices[sel1 - 1]}$,\n2.{texts[sel2 - 1]} - {prices[sel2 - 1]}$,\n3.{texts[sel3 - 1]} - {prices[sel3 - 1]}$.");
-    Console.WriteLine($"Bendra suma: {subTotal21}$.");
-    Console.WriteLine($"Jums galioja akcija 2 vienodoms prekems!\nSuma su %10 nuolaida: {subTotal2}$.");
-    Console.WriteLine("Ar turite lojalumo kortele? (Taip/Ne)");
-    string loj1 = Console.ReadLine();
-    if (loj1 == "Taip")
-    {
-        Console.WriteLine($"Lojalumo 10% nuolaida: {disTotal2}$.");
-        Console.WriteLine($"Jusu moketina suma: {Total2}$.");
-    }
-    else if (loj1 == "Ne")
-    {
-        Console.WriteLine($"Jums neprytaikyta 10% lojalumo nuolaida: {disTotal2}$.");
-        Console.WriteLine($"Jusu moketina suma: {subTotal2}$.");
-    }
-}
-if (unequal && !outRange)
-{
-    double subTotal0 = prices[sel1 - 1] + prices[sel2 - 1] + prices[sel3 - 1];
-    double disTotal0 = subTotal0 * 0.1;
-    double Total0 = subTotal0 - disTotal0;
-    Console.WriteLine("Jus pasirinkote 3 skirtingas prekes:");
-    Console.WriteLine($"1.{texts[sel1 - 1]} - {prices[sel1 - 1]}$,\n2.{texts[sel2 - 1]} - {prices[sel2 - 1]}$,\n3.{texts[sel3 - 1]} - {prices[sel3 - 1]}$.");
-    Console.WriteLine($"Bendra suma: {subTotal0}$.");
-    Console.WriteLine("Ar turite lojalumo kortele? (Taip/Ne)");
-    string loj1 = Console.ReadLine();
-    if (loj1 == "Taip")
-    {
-        Console.WriteLine($"Lojalumo 10% nuolaida: {disTotal0}$.");
-        Console.WriteLine($"Jusu moketina suma: {Total0}$.");
-    }
-    else if (loj1 == "Ne")
-    {
-        Console.WriteLine($"Jums neprytaikyta 10% lojalumo nuolaida: {disTotal0}$.");
-        Console.WriteLine($"Jusu moketina suma: {subTotal0}$.");
-    }
-}
-if (outRange)
-{
-    Console.WriteLine("Vienas ar daugiau pasirinkimu neatitinka, prekiu krepselio!\nBandykite dar karta paleisti programa.");
-}
+//    Console.WriteLine($"Jums galioja akcija 2 vienodoms prekems!\nSuma su %10 nuolaida: {subTotal2}$.");
+//    Console.WriteLine("Ar turite lojalumo kortele? (Taip/Ne)");
+//    string loj1 = Console.ReadLine();
+//    if (loj1 == "Taip")
+//    {
+//        Console.WriteLine($"Lojalumo 10% nuolaida: {disTotal2}$.");
+//        Console.WriteLine($"Jusu moketina suma: {Total2}$.");
+//    }
+//    else if (loj1 == "Ne")
+//    {
+//        Console.WriteLine($"Jums neprytaikyta 10% lojalumo nuolaida: {disTotal2}$.");
+//        Console.WriteLine($"Jusu moketina suma: {subTotal2}$.");
+//    }
+//}
+//if (equals13 && !outRange)
+//{
+//    double subTotal21 = ((2 * prices[sel1 - 1]) + prices[sel2 - 1]);
+//    double dis2 = (2 * prices[sel1 - 1]) * .1;
+//    double subTotal2 = ((2 * prices[sel1 - 1]) + prices[sel2 - 1]) - dis2;
+//    double disTotal2 = subTotal2 * 0.1;
+//    double Total2 = subTotal2 - disTotal2;
+//    Console.WriteLine("Jus pasirinkote 2 vienodas prekes:");
+//    Console.WriteLine($"1.{texts[sel1 - 1]} - {prices[sel1 - 1]}$,\n2.{texts[sel2 - 1]} - {prices[sel2 - 1]}$,\n3.{texts[sel3 - 1]} - {prices[sel3 - 1]}$.");
+//    Console.WriteLine($"Bendra suma: {subTotal21}$.");
+//    Console.WriteLine($"Jums galioja akcija 2 vienodoms prekems!\nSuma su %10 nuolaida: {subTotal2}$.");
+//    Console.WriteLine("Ar turite lojalumo kortele? (Taip/Ne)");
+//    string loj1 = Console.ReadLine();
+//    if (loj1 == "Taip")
+//    {
+//        Console.WriteLine($"Lojalumo 10% nuolaida: {disTotal2}$.");
+//        Console.WriteLine($"Jusu moketina suma: {Total2}$.");
+//    }
+//    else if (loj1 == "Ne")
+//    {
+//        Console.WriteLine($"Jums neprytaikyta 10% lojalumo nuolaida: {disTotal2}$.");
+//        Console.WriteLine($"Jusu moketina suma: {subTotal2}$.");
+//    }
+//}
+//if (unequal && !outRange)
+//{
+//    double subTotal0 = prices[sel1 - 1] + prices[sel2 - 1] + prices[sel3 - 1];
+//    double disTotal0 = subTotal0 * 0.1;
+//    double Total0 = subTotal0 - disTotal0;
+//    Console.WriteLine("Jus pasirinkote 3 skirtingas prekes:");
+//    Console.WriteLine($"1.{texts[sel1 - 1]} - {prices[sel1 - 1]}$,\n2.{texts[sel2 - 1]} - {prices[sel2 - 1]}$,\n3.{texts[sel3 - 1]} - {prices[sel3 - 1]}$.");
+//    Console.WriteLine($"Bendra suma: {subTotal0}$.");
+//    Console.WriteLine("Ar turite lojalumo kortele? (Taip/Ne)");
+//    string loj1 = Console.ReadLine();
+//    if (loj1 == "Taip")
+//    {
+//        Console.WriteLine($"Lojalumo 10% nuolaida: {disTotal0}$.");
+//        Console.WriteLine($"Jusu moketina suma: {Total0}$.");
+//    }
+//    else if (loj1 == "Ne")
+//    {
+//        Console.WriteLine($"Jums neprytaikyta 10% lojalumo nuolaida: {disTotal0}$.");
+//        Console.WriteLine($"Jusu moketina suma: {subTotal0}$.");
+//    }
+//}
+//if (outRange)
+//{
+//    Console.WriteLine("Vienas ar daugiau pasirinkimu neatitinka, prekiu krepselio!\nBandykite dar karta paleisti programa.");
+//}
 #endregion
 
 
