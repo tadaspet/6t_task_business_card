@@ -221,9 +221,9 @@
             #endregion
 
             #region 2.3
-            Console.WriteLine("------Task 2.3------");
+            //Console.WriteLine("------Task 2.3------");
 
-            Console.WriteLine("------END-----------");
+            //Console.WriteLine("------END-----------");
             #endregion
         }
         static public void NewDictionaryNameAge()
