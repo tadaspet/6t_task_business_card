@@ -7,54 +7,73 @@ namespace _17.Projektas
         static void Main(string[] args)
         {
             Dictionary<string, Dictionary<string, int>> users;
-            //Dictionary<int, string> menu;
-            string currentUser;
-            int menuSelection;
-            bool quit;
-            string category;
             IOrderedEnumerable<KeyValuePair<string, int>> sortedScores;
-            Console.WriteLine("Hello, welcome to the Quiz Game!");
+            string currentUser;
+            int menuSelection = 0;
+            bool quit = false;
+            string category;
             FirstUser(out users, out currentUser);
-            Thread.Sleep(1000); 
-            Console.Clear();
-            NewUser(users, out currentUser);
-            LargestsLakesOfContinents(currentUser, users, out category);
-            Thread.Sleep(1000);
-            Console.Clear();
-            CapitalPopulation2023(currentUser,users, out category);
-            //PrintMenu(currentUser);
-            //MenuAction(out menuSelection);
-            Thread.Sleep(1000);
-            Console.Clear();
-            NewUser(users, out currentUser);
-            LargestsLakesOfContinents(currentUser, users, out category);
-            Thread.Sleep(1000);
-            Console.Clear();
-            NewUser(users, out currentUser);
-            CapitalPopulation2023(currentUser, users, out category);
-            Thread.Sleep(1000);
-            Console.Clear();
-            TotalCategoryResultsTable(users);
-            Console.WriteLine();
-            CalculatedAndSorted(users,out sortedScores);
-            PrintSortedScores(users);
-            //foreach (var user in users)
-            //{
-            //    Console.WriteLine(user.Key);
-            //}
-            //Console.WriteLine(currentUser);
-
+            do
+            {
+                MenuSelection(currentUser, out menuSelection);
+                switch (menuSelection)
+                {
+                    case 1:
+                        {
+                            do 
+                            {
+                                QuizSubMenu(currentUser, users, quit);
+                                RepeatQuizSubMenu(currentUser, out quit);
+                            }while (!quit);
+                            break;
+                        }
+                    case 2:
+                        {
+                            Rules(currentUser);
+                            break;
+                        }
+                    case 3:
+                        {
+                            do
+                            {
+                                ResultsSubMenu(currentUser, users, quit);
+                                RepeatResultsSubMenu(currentUser, out quit);
+                            }while (!quit);
+                            break;
+                        }
+                    case 4:
+                        {
+                            NewUser(users, ref currentUser);
+                            break;
+                        }
+                    case 5:
+                        {
+                            CloseQuizGame();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+            } while (menuSelection > 0 && menuSelection < 5);
         }
+        #region Register
         public static void FirstUser(out Dictionary<string, Dictionary<string, int>> usersBook, out string currentUser)
         {
+            Console.WriteLine("Hello, welcome to the Geography Quiz Game!");
             usersBook = new Dictionary<string, Dictionary<string,int>>();
             Console.WriteLine("Please register in the system by Name and Surname:");
             currentUser = Console.ReadLine();
+            Console.WriteLine("Registration was succesfull!");
             usersBook.Add(currentUser, new Dictionary<string,int>());
             CategoryKeys(usersBook);
+            Thread.Sleep(1000);
+            Console.Clear();
         }
-        public static void NewUser(Dictionary<string, Dictionary<string, int>> users, out string currentUser)
+        public static void NewUser(Dictionary<string, Dictionary<string, int>> users, ref string currentUser)
         {
+            Console.WriteLine(value: $"Current player - {currentUser}.\n");
             Console.WriteLine("Please enter new Name and Surname:");
             currentUser = Console.ReadLine();
             bool check = users.ContainsKey(currentUser);
@@ -69,6 +88,7 @@ namespace _17.Projektas
                     Console.WriteLine("Please eneter your Name and Surname:");
                     newUser2 = Console.ReadLine();
                     users.Add(newUser2, new Dictionary<string, int>());
+                    currentUser = newUser2;
                 }
                 else
                 {
@@ -80,12 +100,27 @@ namespace _17.Projektas
                 Console.WriteLine("You have been registered successfully!");
                 users.Add(currentUser, new Dictionary<string, int>());
             }
+            Thread.Sleep(2000);
+            Console.Clear();
             CategoryKeys(users);
         }
-
-        public static void MenuAction(out int menuSelection)
+        public static void CategoryKeys(Dictionary<string, Dictionary<string, int>> users)
         {
+            List<string> allCategories = new List<string> { "Cities", "Lakes", "Mountains" };
+            foreach (var user in users)
+            {
+                foreach (var category in allCategories)
+                {
+                    if (!user.Value.ContainsKey(category))
+                        user.Value[category] = 0;
+                }
+            }
+        }
+        #endregion
 
+        #region Menu
+        public static void ActionMenu (out int menuSelection)
+        {
             string menuInput = Console.ReadLine();
             menuSelection = 0;
             int menuOption;
@@ -104,6 +139,7 @@ namespace _17.Projektas
                 {
                     invalidSelection = false;
                     Console.WriteLine("Rules will be opened");
+                    menuSelection = 2;  
                 }
             }
             if (menuOption < 6 && menuOption > 0 && menuInput != "q")
@@ -111,54 +147,183 @@ namespace _17.Projektas
                 switch (menuOption)
                 {
                     case 1:
-                        Console.WriteLine("Lets go to check the rules.");
                         menuSelection = 1;
+                        Console.WriteLine("Starting the GAME!");
+                        Thread.Sleep(1500);
+                        Console.Clear();
                         break;
                     case 2:
                         menuSelection = 2;
-                        Console.WriteLine("LET THE GAME BEGIN!");
+                        Console.WriteLine("Opening the RULES.");
+                        Thread.Sleep(1500);
+                        Console.Clear();
                         break;
                     case 3:
                         menuSelection = 3;
-                        Console.WriteLine("Interesting Analytics wil be shown.");
+                        Console.WriteLine("Opening the PLAYER RECORDS.");
+                        Thread.Sleep(1500);
+                        Console.Clear();
                         break;
                     case 4:
                         menuSelection = 4;
-                        Console.WriteLine("New person - new results :)");
+                        Console.WriteLine("Opening the CHANGE PLAYER");
+                        Thread.Sleep(1500);
+                        Console.Clear();
                         break;
                     case 5:
                         menuSelection = 5;
-                        Console.WriteLine("We will meet another time...");
+                        Console.WriteLine("I hope see you soon, QUITING GAME");
+                        Thread.Sleep(1500);
+                        Console.Clear();
                         break;
                     default:
                         Console.WriteLine("Try another menu option:");
+                        Thread.Sleep(1500);
+                        Console.Clear();
                         break;
                 }
             }
-            else if (!menuCheck)
+            if (!menuCheck)
             {
-                Console.WriteLine("Try to login again");
+                Console.WriteLine("Invalid menu character.\nPlease enter 2 to read the rules.");
             }
         }
-        public static void PrintMenu(string currentUser)
+        public static void MenuSelection(string currentUser, out int menuSelection)
         {
-            Console.WriteLine($"Current player - {currentUser}.");
-            Console.WriteLine("Choose menu action by number:");
+            Console.Clear();
+            Console.WriteLine($"Current player - {currentUser}.\n");
+            Console.WriteLine("CHOOSE MENU ACTION BY NUMBER:");
             Dictionary<int, string> menu = new Dictionary<int, string>()
-            {   {1, "Rules" },
-                {2, "Start Game" },
-                {3, "Statistics" },
-                {4, "Change User" },
+            {   {1, "Start Game" },
+                {2, "Rules" },
+                {3, "Player Records" },
+                {4, "Change Player" },
                 {5, "Quit Game" }
             };
-            foreach(var optionKeyValuePair  in menu)
+            foreach(var optionKeyValuePair in menu)
             {
                 Console.WriteLine(optionKeyValuePair.Key + ". " + optionKeyValuePair.Value);
             }
+            ActionMenu(out menuSelection);
         }
-        public static void CapitalPopulation2023(string currentUser, Dictionary<string, Dictionary<string, int>> users, out string category)
+        public static void Rules(string currentUser)
         {
-            category = "Cities";
+            Console.WriteLine($"Current player - {currentUser}.\n");
+            Console.WriteLine("Navigation:" +
+                "\n\t- Quiz game is navigated by entering number of the possible menu option;" +
+                "\n\t- Enter 'q' to go back from to the main menu from:" +
+                "\n\t\t1.Start Game," +
+                "\n\t\t2.Rules," +
+                "\n\t\t3.Player Records.\n" +
+                "\nChange Player:" +
+                "\n\t- Enter new Name and Surname to save your results as different player;" +
+                "\n\t- If player name was taken you can choose to overwrite his results, after additional confirmation.\n" +
+                "\nStatistics:" +
+                "\n\t- All results are displayed by decending order from the best to lowest score;" +
+                "\n\t- When score results are equal earlier result is shown above later;" +
+                "\n\t- After each Quiz you can see category score records;" +
+                "\n\t- Menu 3. Player Records:" +
+                "\n\t\t1.Top Results - player ranks by overall score;" +
+                "\n\t\t2.Detailed results - all player with separate category scores.");
+            bool quit;
+            MenuBackToPrevious(out quit);
+        }
+        public static void MenuBackToPrevious(out bool quit)
+        {
+            Console.WriteLine("\nPlease enter 'q' to go back.");
+            string inPut = Console.ReadLine();
+            while(inPut != "q")
+            {
+                Console.WriteLine("Please enter 'q' to go back.");
+                inPut = Console.ReadLine();
+            }
+            quit = true;
+            Console.Clear();
+        }
+        public static void RepeatQuizSubMenu(string currentUser, out bool quit)
+        {
+            Console.Clear ();
+            Console.WriteLine($"Current player - {currentUser}.\n");
+            Console.WriteLine("Press - Enter to choose quizes\nPress - 'q' to go back to main menu:");
+            string check = Console.ReadLine();
+            if (check == "q")
+            {
+                quit = true;
+            }
+            else 
+            {
+                quit = false;
+            }
+            Console.Clear();
+        }
+
+        #endregion
+
+        #region Quizes
+        public static void QuizSubMenu(string currentUser, Dictionary<string, Dictionary<string, int>> users, bool quit)
+        {
+            string category;
+            quit = false;
+            int menuOption = -1;
+            Console.WriteLine($"Current player - {currentUser}.\n");
+            Console.WriteLine("1.Cities\n2.Lakes\n3.Mountains");
+            string subInput = Console.ReadLine();
+            bool menuCheck = int.TryParse(subInput, out menuOption);
+            if (subInput == "q" && !menuCheck)
+            {
+                quit = true;
+            }
+            while ((menuOption > 3 || menuOption < 1) && !quit)
+            {
+                Console.WriteLine("Please re-enter valid number from menu:");
+                string secondTry = Console.ReadLine();
+                bool check = int.TryParse(secondTry, out menuOption);
+                menuCheck = check;
+                if (secondTry == "q")
+                {
+                    Console.WriteLine("Returning...");
+                    quit = true;
+                    break;
+                }
+            }
+            while (menuOption < 4 && menuOption > 0 && !quit)
+            {
+                switch (menuOption)
+                {
+                    case 1:
+                        category = "Cities";
+                        CapitalPopulation2023(currentUser, users, category, out quit);
+                        Console.Clear();
+                        break;
+                    case 2:
+                        category = "Lakes";
+                        LargestsLakesOfContinents(currentUser, users, category, out quit);
+                        Console.Clear();
+                        break;
+                    case 3:
+                        category = "Mountain";
+                        MountainCountries(currentUser, users, category, out quit);
+                        Console.Clear();
+                        break;
+                    default:
+                        break;
+                } 
+            } 
+        }
+        public static void BackToQuizResults(out bool quit, string category)
+        {
+            Console.WriteLine($"\nPlease enter 'q' to view {category} all players scores.");
+            string inPut = Console.ReadLine();
+            while (inPut != "q")
+            {
+                Console.WriteLine("Please enter 'q' to return.");
+                inPut = Console.ReadLine();
+            }
+            quit = true;
+            Console.Clear();
+        }
+        public static void CapitalPopulation2023(string currentUser, Dictionary<string, Dictionary<string, int>> users, string category, out bool quit)
+        {
             Dictionary<string, List<string>> cityPopulations = new Dictionary<string, List<string>>()
             {
                 {"Berlin", new List<string> { "3.5 mln", "4.3 mln", "2.9 mln", "3.8 mln" } }, 
@@ -171,7 +336,8 @@ namespace _17.Projektas
             List<int> userAnsw = new List<int>();
             List<string> city = new List<string>(cityPopulations.Keys);
             int pointAmount = 0;
-            Thread.Sleep(1000);
+            quit = false;
+            Thread.Sleep(1500);
             Console.Clear();
             for ( int i = 0; i < city.Count; i++)
             {
@@ -183,7 +349,14 @@ namespace _17.Projektas
                     Console.WriteLine($"{j + 1}. {populations[j]}");
                 }
                 Console.WriteLine("Type the answer number:");
-                int userAnswer = Convert.ToInt32(Console.ReadLine());
+                int userAnswer;
+                string answerInput = Console.ReadLine();
+                bool parseCheck= int.TryParse( answerInput, out userAnswer);
+                if (answerInput == "q")
+                {
+                    quit = true;
+                    break;
+                }
                 if (userAnswer == answers[i])
                 {
                     Console.WriteLine("Answer is correct!");
@@ -195,12 +368,12 @@ namespace _17.Projektas
                     Console.WriteLine("Awnswer is wrong.");
                     userAnsw.Add(0);
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(1500);
                 Console.Clear();
             }
-            users[currentUser]["Cities"] = pointAmount;
+            users[currentUser][category] = pointAmount;
             Console.WriteLine($"Current player - {currentUser}\nPoints - {pointAmount}\n\n");
-            Console.WriteLine("Category Cities summary.".PadLeft(35));
+            Console.WriteLine($"Category {category} summary.".PadLeft(35));
             for (int i = 0;i < userAnsw.Count;i++)
             {
                 if (userAnsw[i] == 1)
@@ -213,16 +386,14 @@ namespace _17.Projektas
                 }
             }
             Console.WriteLine("".PadRight(9) + $"Total Points - {pointAmount}");
-            Console.ReadLine();
-            Console.Clear();
+            BackToQuizResults(out quit, category);
             Console.WriteLine($"Current player - {currentUser}\nPoints - {pointAmount}\n\n");
             ByCategoryResultsTable(users, category);
-            Console.ReadLine();
-            Console.Clear();
+            MenuBackToPrevious(out quit);
         }
-        public static void LargestsLakesOfContinents(string currentUser, Dictionary<string, Dictionary<string, int>> users, out string category)
+        public static void LargestsLakesOfContinents(string currentUser, Dictionary<string, Dictionary<string, int>> users, string category, out bool quit)
         {
-            category = "Lakes";
+   
             Dictionary<string, List<string>> contLakes = new Dictionary<string, List<string>>()
             {
                 {"North America", new List<string> { "Lake Michigan", "Lake Huron", "Lake Superior", "Great Bear Lake" } }, 
@@ -235,7 +406,8 @@ namespace _17.Projektas
             List<int> userAnsw = new List<int>();
             List<string> continent = new List<string>(contLakes.Keys);
             int pointAmount = 0;
-            Thread.Sleep(1000);
+            quit = false;
+            Thread.Sleep(1500);
             Console.Clear();
             for (int i = 0; i < continent.Count; i++)
             {
@@ -247,7 +419,14 @@ namespace _17.Projektas
                     Console.WriteLine($"{j + 1}. {lakeList[j]}");
                 }
                 Console.WriteLine("Type the answer number:");
-                int userAnswer = Convert.ToInt32(Console.ReadLine());
+                int userAnswer;
+                string answerInput = Console.ReadLine();
+                bool parseCheck = int.TryParse(answerInput, out userAnswer);
+                if (answerInput == "q")
+                {
+                    quit = true;
+                    break;
+                }
                 if (userAnswer == answers[i])
                 {
                     Console.WriteLine("Answer is correct!");
@@ -259,12 +438,12 @@ namespace _17.Projektas
                     Console.WriteLine("Awnswer is wrong.");
                     userAnsw.Add(0);
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(1500);
                 Console.Clear();
             }
-            users[currentUser]["Lakes"] = pointAmount;
+            users[currentUser][category] = pointAmount;
             Console.WriteLine($"Current player - {currentUser}\nPoints - {pointAmount}\n\n");
-            Console.WriteLine("Category Lakes summary.".PadLeft(35));
+            Console.WriteLine($"Category {category} summary.".PadLeft(35));
             for (int i = 0; i < userAnsw.Count; i++)
             {
                 if (userAnsw[i] == 1)
@@ -277,16 +456,13 @@ namespace _17.Projektas
                 }
             }
             Console.WriteLine("".PadRight(9) + $"Total Points - {pointAmount}");
-            Console.ReadLine();
-            Console.Clear();
+            BackToQuizResults(out quit, category);
             Console.WriteLine($"Current player - {currentUser}\nPoints - {pointAmount}\n\n");
             ByCategoryResultsTable(users, category);
-            Console.ReadLine();
-            Console.Clear();
+            MenuBackToPrevious(out quit);
         }
-        public static void MountainCOuntries(string currentUser, Dictionary<string, Dictionary<string, int>> users, out string category)
+        public static void MountainCountries(string currentUser, Dictionary<string, Dictionary<string, int>> users, string category, out bool quit)
         {
-            category = "Mountain";
             Dictionary<string, List<string>> countryMountain = new Dictionary<string, List<string>>()
             {
                 {"Bhutan", new List<string> { "95.0%", "98.8%", "90.7%", "85.2%" } },
@@ -299,7 +475,7 @@ namespace _17.Projektas
             List<int> userAnsw = new List<int>();
             List<string> country = new List<string>(countryMountain.Keys);
             int pointAmount = 0;
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             Console.Clear();
             for (int i = 0; i < country.Count; i++)
             {
@@ -311,7 +487,14 @@ namespace _17.Projektas
                     Console.WriteLine($"{j + 1}. {percMountain[j]}");
                 }
                 Console.WriteLine("Type the answer number:");
-                int userAnswer = Convert.ToInt32(Console.ReadLine());
+                int userAnswer;
+                string answerInput = Console.ReadLine();
+                bool parseCheck = int.TryParse(answerInput, out userAnswer);
+                if (answerInput == "q")
+                {
+                    quit = true;
+                    break;
+                }
                 if (userAnswer == answers[i])
                 {
                     Console.WriteLine("Answer is correct!");
@@ -323,12 +506,12 @@ namespace _17.Projektas
                     Console.WriteLine("Awnswer is wrong.");
                     userAnsw.Add(0);
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(1500);
                 Console.Clear();
             }
-            users[currentUser]["Mountain"] = pointAmount;
+            users[currentUser][category] = pointAmount;
             Console.WriteLine($"Current player - {currentUser}\nPoints - {pointAmount}\n\n");
-            Console.WriteLine("Category Mountain summary.".PadLeft(35));
+            Console.WriteLine($"Category {category} summary.".PadLeft(35));
             for (int i = 0; i < userAnsw.Count; i++)
             {
                 if (userAnsw[i] == 1)
@@ -341,20 +524,21 @@ namespace _17.Projektas
                 }
             }
             Console.WriteLine("".PadRight(9) + $"Total Points - {pointAmount}");
-            Console.ReadLine();
-            Console.Clear();
+            BackToQuizResults(out quit, category);
             Console.WriteLine($"Current player - {currentUser}\nPoints - {pointAmount}\n\n");
             ByCategoryResultsTable(users, category);
-            Console.ReadLine();
-            Console.Clear();
+            MenuBackToPrevious(out quit);
         }
+        #endregion
+
+        #region Player Records
         public static void ByCategoryResultsTable(Dictionary<string, Dictionary<string, int>> users, string category)
         {
             Dictionary<string, Dictionary<string, int>> totalTable = new Dictionary<string, Dictionary<string, int>>();
             foreach (var user in users)
             {
                 int sum = 0;
-                
+
                 foreach (var results in user.Value)
                 {
                     sum += results.Value;
@@ -365,23 +549,19 @@ namespace _17.Projektas
             }
             var sortedUserstotalTable = totalTable.OrderByDescending(user => user.Value[category]);
             int count = 1;
-            Console.WriteLine($"     Players Records sorted by {category}");
+            Console.WriteLine($"Players Scores in category - {category}:\n");
             foreach (var user in sortedUserstotalTable)
             {
-                
-                Console.WriteLine($"No.{count} {user.Key}");
                 foreach (var result in user.Value)
                 {
-                    Console.Write($"\t{result.Key.PadRight(20)}");
+                    if (result.Key == category)
+                    {
+                        Console.WriteLine($"No.{count} {user.Key}\t\t{result.Value}");
+                    }
                 }
-                Console.WriteLine();
-                foreach (var result in user.Value)
-                {
-                    Console.Write($"\t{result.Value.ToString().PadRight(20)}");
-                }
-                Console.WriteLine();
                 count++;
-            }
+            } 
+
         }
         public static void TotalCategoryResultsTable(Dictionary<string, Dictionary<string, int>> users)
         {
@@ -459,20 +639,102 @@ namespace _17.Projektas
                 count++;
             }
         }
-        public static void CategoryKeys(Dictionary<string, Dictionary<string, int>> users)
+        public static void ResultsSubMenu(string currentUser, Dictionary<string, Dictionary<string, int>> users, bool quit)
         {
-            List<string> allCategories = new List<string> { "Cities", "Lakes", "Mountains" };
-            foreach (var user in users)
+            Console.Clear();
+            string resultsType;
+            quit = false;
+            int menuOption = -1;
+            Console.WriteLine($"Current player - {currentUser}.\n");
+            Console.WriteLine("1.Top Results\n2.Detailed results");
+            string subInput = Console.ReadLine();
+            bool menuCheck = int.TryParse(subInput, out menuOption);
+            if (subInput == "q" && !menuCheck)
             {
-                foreach (var category in allCategories)
+                quit = true;
+            }
+            while ((menuOption > 2 || menuOption < 1) && !quit)
+            {
+                Console.WriteLine("Please re-enter valid number from menu:");
+                string secondTry = Console.ReadLine();
+                bool check = int.TryParse(secondTry, out menuOption);
+                menuCheck = check;
+                if (secondTry == "q")
                 {
-                    if (!user.Value.ContainsKey(category))
-                        user.Value[category] = 0;
+                    Console.WriteLine("Returning...");
+                    quit = true;
+                    break;
                 }
             }
+            while (menuOption < 3 && menuOption > 0 && !quit)
+            {
+                switch (menuOption)
+                {
+                    case 1:
+                        PrintSortedScores(users);
+                        Console.Clear();
+                        break;
+                    case 2:
+                        TotalCategoryResultsTable(users);
+                        Console.Clear();
+                        break;
+                    default:
+                        break;
+                }
+
+
+            }
+        }
+        public static void RepeatResultsSubMenu(string currentUser, out bool quit)
+        {
+            Console.Clear();
+            Console.WriteLine($"Current player - {currentUser}.\n");
+            Console.WriteLine("Press - Enter to choose Results\nPress - 'q' to go back to main menu:");
+            string check = Console.ReadLine();
+            if (check == "q")
+            {
+                quit = true;
+            }
+            else
+            {
+                quit = false;
+            }
+            Console.Clear();
+        }
+        #endregion
+
+        public static void CloseQuizGame()
+        {
+            string goodBey = "Good Bey";
+            string space = "";
+            int length = 0;
+            for (int i = 0; i < 60; i++)
+            {
+                length = space.Length + goodBey.Length;
+                if (length <= 60)
+                {
+                    Console.WriteLine(space + goodBey);
+                    Thread.Sleep(0080);
+                    Console.Clear();
+                }
+                else if (length > 60)
+                {
+                    goodBey=goodBey.Substring(0, goodBey.Length-1);
+                    Console.WriteLine(space + goodBey);
+                    Thread.Sleep(0080);
+                    Console.Clear();
+                }
+                space += " ";
+            }
+            Console.WriteLine("THANK YOU FOR YOUR TIME.".PadLeft(40));
+            Thread.Sleep(2000);
+            Console.Clear();
+            Environment.Exit(0);
         }
     }
 }
+
+
 
 //dictionary with list by name and surname
 // vienu metu vienas zaidejas, galima atsijungti ir ziasti kitam ziadejui.
