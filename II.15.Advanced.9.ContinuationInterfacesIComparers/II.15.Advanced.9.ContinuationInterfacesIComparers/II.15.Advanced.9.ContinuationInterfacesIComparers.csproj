@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>II._15.Advanced._9.ContinuationInterfacesIComparers</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\petru\source\repos\II.15.Advanced.9.ContinuationInterfacesIComparers\II.15.Advanced.9.ContinuationInterfacesIComparers\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\petru\source\repos\II.15.Advanced.9.ContinuationInterfacesIComparers\II.15.Advanced.9.ContinuationInterfacesIComparers\.editorconfig" />
+  </ItemGroup>
+
+</Project>
