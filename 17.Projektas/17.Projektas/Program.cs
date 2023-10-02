@@ -162,32 +162,22 @@ namespace _17.Projektas
                 {
                     case 1:
                         menuSelection = 1;
-                        //Console.WriteLine("Starting the GAME!");
-                        //Thread.Sleep(1500);
                         Console.Clear();
                         break;
                     case 2:
                         menuSelection = 2;
-                        //Console.WriteLine("Opening the RULES.");
-                        //Thread.Sleep(1500);
                         Console.Clear();
                         break;
                     case 3:
                         menuSelection = 3;
-                        //Console.WriteLine("Opening the PLAYER RECORDS.");
-                        //Thread.Sleep(1500);
                         Console.Clear();
                         break;
                     case 4:
                         menuSelection = 4;
-                        //Console.WriteLine("Opening the CHANGE PLAYER");
-                        //Thread.Sleep(1500);
                         Console.Clear();
                         break;
                     case 5:
                         menuSelection = 5;
-                        //Console.WriteLine("I hope see you soon, QUITING GAME");
-                        //Thread.Sleep(1500);
                         Console.Clear();
                         break;
                     default:
@@ -279,7 +269,6 @@ namespace _17.Projektas
             }
             Console.Clear();
         }
-
         #endregion
 
         #region Quizes
@@ -689,7 +678,6 @@ namespace _17.Projektas
             }
             Thread.Sleep(3000);
             RepeatQuizSubMenu(currentUser, out quit, out quitInner);
-
         }
         public static void ResultsSubMenu(string currentUser, Dictionary<string, Dictionary<string, int>> users, out bool quit, out bool quitInner)
         {
