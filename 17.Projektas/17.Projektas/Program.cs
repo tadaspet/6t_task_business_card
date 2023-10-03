@@ -348,15 +348,16 @@ namespace _17.Projektas
                 {"Vienna", new List<string> { "3.0 mln", "2.5 mln", "1.9 mln", "2.0 mln" } }, 
                 {"London", new List<string> { "8.7 mln", "9.6 mln", "10.9 mln", "7.8 mln" } } 
             };
-            List<int> answers = new List<int> { 2, 1, 3, 4, 2 };
+            List<int> answers = new List<int> { 1, 0, 2, 3, 1 };
             List<int> userAnsw = new List<int>();
             List<string> city = new List<string>(cityPopulations.Keys);
+            List<string> populations= new List<string>();
             quit = false;
             int pointAmount = 0;
             Console.Clear();
             for ( int i = 0; i < city.Count; i++)
             {
-                List<string> populations = cityPopulations[city[i]];
+                populations = cityPopulations[city[i]];
                 Console.WriteLine($"Current player - {currentUser}\nPoints - {pointAmount}\n\nQuestion - {i+1}/5");
                 Console.WriteLine($"What population is in the {city[i].ToUpper()} at 2023?");
                 for(int j = 0; j < populations.Count; j++)
@@ -372,15 +373,19 @@ namespace _17.Projektas
                     quit = true;
                     break;
                 }
-                if (userAnswer == answers[i])
+                if (userAnswer-1 == answers[i])
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine("Answer is correct!");
+                    Console.ForegroundColor= ConsoleColor.White;
                     pointAmount+=2;
                     userAnsw.Add(1);
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Awnswer is wrong.");
+                    Console.ForegroundColor = ConsoleColor.White;
                     userAnsw.Add(0);
                 }
                 Thread.Sleep(1500);
@@ -393,13 +398,14 @@ namespace _17.Projektas
             Console.WriteLine($"Answered questions {userAnsw.Count}/5");
             for (int i = 0;i < userAnsw.Count;i++)
             {
+                List<string> correctAnswers= new List<string>(cityPopulations.Keys);
                 if (userAnsw[i] == 1)
                 {
-                    Console.Write($"No.{i+1} Correct".PadRight(15) + $"Points - 2\n");
+                    Console.Write($"No.{i+1} Correct, answer - {city[i]} population - {cityPopulations[city[i]][answers[i]]}".PadRight(70) + $"\tPoints - 2.".PadLeft(10)+"\n");
                 }
                 else if (userAnsw[i] == 0)
                 {
-                    Console.Write($"No.{i + 1} Wrong".PadRight(15) + $"Points - 0\n");
+                    Console.Write($"No.{i + 1} Wrong, answer - {city[i]} population - {cityPopulations[city[i]][answers[i]]}".PadRight(70) + $"\tPoints - 0.".PadLeft(10)+"\n");
                 }
             }
             Console.WriteLine("".PadRight(9) + $"Total Points - {pointAmount}");
@@ -411,7 +417,6 @@ namespace _17.Projektas
         }
         public static void LargestsLakesOfContinents(string currentUser, Dictionary<string, Dictionary<string, int>> users, string category, out bool quit, out bool quitInner)
         {
-   
             Dictionary<string, List<string>> contLakes = new Dictionary<string, List<string>>()
             {
                 {"North America", new List<string> { "Lake Michigan", "Lake Huron", "Lake Superior", "Great Bear Lake" } }, 
@@ -420,7 +425,7 @@ namespace _17.Projektas
                 {"Asia", new List<string> { "Lake Baikal", "Aral Sea", "Caspian Sea", "Lake Balkhash" } }, 
                 {"Africa", new List<string> { "Lake Tanganyika", "Lake Victoria", "Lake Malawi", "Lake Turkana" } } 
             };
-            List<int> answers = new List<int> { 3, 4, 1, 3, 2 };
+            List<int> answers = new List<int> { 2, 3, 0, 2, 1 };
             List<int> userAnsw = new List<int>();
             List<string> continent = new List<string>(contLakes.Keys);
             int pointAmount = 0;
@@ -445,15 +450,19 @@ namespace _17.Projektas
                     quit = true;
                     break;
                 }
-                if (userAnswer == answers[i])
+                if (userAnswer-1 == answers[i])
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine("Answer is correct!");
+                    Console.ForegroundColor = ConsoleColor.White;
                     pointAmount += 2;
                     userAnsw.Add(1);
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Awnswer is wrong.");
+                    Console.ForegroundColor = ConsoleColor.White;
                     userAnsw.Add(0);
                 }
                 Thread.Sleep(1500);
@@ -466,13 +475,14 @@ namespace _17.Projektas
             Console.WriteLine($"Answered questions {userAnsw.Count}/5");
             for (int i = 0; i < userAnsw.Count; i++)
             {
+                List<string> correctAnswers = new List<string>(contLakes.Keys);
                 if (userAnsw[i] == 1)
                 {
-                    Console.Write($"No.{i + 1} Correct".PadRight(15) + $"Points - 2\n");
+                    Console.Write($"No.{i + 1} Correct, answer: {continent[i]} biggest lake - {contLakes[continent[i]][answers[i]]}".PadRight(70) + $"\tPoints - 2.".PadLeft(10) + "\n");
                 }
                 else if (userAnsw[i] == 0)
                 {
-                    Console.Write($"No.{i + 1} Wrong".PadRight(15) + $"Points - 0\n");
+                    Console.Write($"No.{i + 1} Wrong, answer: {continent[i]} biggest lake - {contLakes[continent[i]][answers[i]]}".PadRight(70) + $"\tPoints - 0.".PadLeft(10) + "\n");
                 }
             }
             Console.WriteLine("".PadRight(9) + $"Total Points - {pointAmount}");
@@ -492,7 +502,7 @@ namespace _17.Projektas
                 {"Kyrgyzstan", new List<string> { "95.3%", "90.7%", "80.7%", "95.6%" } },
                 {"China", new List<string> { "70.0%", "95.2%", "80.7%", "75.5%" } }
             };
-            List<int> answers = new List<int> { 2, 3, 4, 2, 1 };
+            List<int> answers = new List<int> { 1, 2, 3, 1, 0 };
             List<int> userAnsw = new List<int>();
             List<string> country = new List<string>(countryMountain.Keys);
             int pointAmount = 0;
@@ -517,15 +527,19 @@ namespace _17.Projektas
                     quit = true;
                     break;
                 }
-                if (userAnswer == answers[i])
+                if (userAnswer-1 == answers[i])
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine("Answer is correct!");
+                    Console.ForegroundColor = ConsoleColor.White;
                     pointAmount += 2;
                     userAnsw.Add(1);
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Awnswer is wrong.");
+                    Console.ForegroundColor = ConsoleColor.White;
                     userAnsw.Add(0);
                 }
                 Thread.Sleep(1500);
@@ -538,13 +552,14 @@ namespace _17.Projektas
             Console.WriteLine($"Answered questions {userAnsw.Count}/5");
             for (int i = 0; i < userAnsw.Count; i++)
             {
+                List<string> correctAnswers = new List<string>(countryMountain.Keys);
                 if (userAnsw[i] == 1)
                 {
-                    Console.Write($"No.{i + 1} Correct".PadRight(15) + $"Points - 2\n");
+                    Console.Write($"No.{i + 1} Correct, answer: {country[i]} mountain area - {countryMountain[country[i]][answers[i]]}".PadRight(70) + $"\tPoints - 2.".PadLeft(10) + "\n");
                 }
                 else if (userAnsw[i] == 0)
                 {
-                    Console.Write($"No.{i + 1} Wrong".PadRight(15) + $"Points - 0\n");
+                    Console.Write($"No.{i + 1} Wrong, answer: {country[i]} mountain area - {countryMountain[country[i]][answers[i]]}".PadRight(70) + $"\tPoints - 0.".PadLeft(10) + "\n");
                 }
             }
             Console.WriteLine("".PadRight(9) + $"Total Points - {pointAmount}");
