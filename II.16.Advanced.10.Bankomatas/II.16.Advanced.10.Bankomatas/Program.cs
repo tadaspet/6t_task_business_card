@@ -8,6 +8,7 @@ namespace II._16.Advanced._10.Bankomatas
         {
             BankInformation createBank = new BankInformation();
             createBank.BankInfoList();
+
             CardCheck cardCheck = new CardCheck(createBank);
             cardCheck.ShowAccounts();
             cardCheck.CheckGuide(cardCheck.GetGuid());
@@ -18,17 +19,46 @@ namespace II._16.Advanced._10.Bankomatas
             CardBalance userBalance = new CardBalance(newUser);
             userBalance.ShowBalance();
 
+            Transaction withdraw = new Transaction(newUser);
+            ViewTransactions records = new ViewTransactions(withdraw);
+            
+            var menu = new Menu();
+            int selection = 0;
+            do
+            {
+                selection = menu.ActionMenu();
+                switch (selection)
+                {
+                    case 1:
+                        {
+                            userBalance.ShowBalance();
+                            menu.Return();
+                            break;
+                        }
+                    case 2:
+                        {
+                            records.ShowTransactions();
+                            menu.Return();
+                            break;
+                        }
+                    case 3:
+                        {
+                            withdraw.ReduceBalance();
+                            menu.Return();
+                            break;
+                        }
+                    case 4:
+                        {
+                            menu.Quit();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+            } while (selection > 0 && selection < 5);
 
-
-
-
-            Transaction withDraw = new Transaction(newUser);
-            withDraw.TakeMoney();
-            withDraw.TakeMoney();
-            withDraw.TakeMoney();
-
-            ViewTransactions view = new ViewTransactions(withDraw);
-            view.ShowTransactions();
         }
     }
 }

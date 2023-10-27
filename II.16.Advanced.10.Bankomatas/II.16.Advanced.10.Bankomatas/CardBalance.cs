@@ -23,8 +23,6 @@ namespace II._16.Advanced._10.Bankomatas
                 Console.Clear();
                 Console.WriteLine($"Your account No: {User.GuidNo}" +
                     $"\nBalance: {User.Balance} Euros.");
-                Thread.Sleep(3000);
-                Console.Clear();
             }
             else
             {

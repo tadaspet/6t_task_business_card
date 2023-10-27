@@ -16,26 +16,39 @@ namespace II._16.Advanced._10.Bankomatas
         }
         public List<TransactionData> FindLastTransactions()
         {
-            List<TransactionData> listFiltered = Log.Where(t => t.Time.Date == DateTime.Today.Date).ToList();
+            List<TransactionData> listFiltered = Log.Where(t => t.Time.Date == DateTime.Today.Date).
+                OrderByDescending(t => t.Time).ToList();
             return listFiltered;
         }
         public void ShowTransactions()
         {
             List<TransactionData> listF = FindLastTransactions();
             int transCount;
-            if (listF.Count >= 5)
+            if (listF.Count == 0)
+            {
+                Console.WriteLine("There is no transaction records yet.");
+            }
+            else if (listF.Count >= 5)
             {
                 transCount = 5;
+                Console.WriteLine("The Last 5 transactions.");
+                Console.WriteLine("No" + "Time".PadLeft(24) + "Amount".PadLeft(12));
+                for (int i = 0; i < transCount; i++)
+                {
+                    Console.WriteLine((i + 1) + $"{listF[i].Time}".PadLeft(25) + $"{listF[i].Amount}".PadLeft(12));
+                }
             }
             else
             {
                 transCount = listF.Count;
+                Console.WriteLine("The Last 5 transactions.");
+                Console.WriteLine("No" + "Time".PadLeft(24) + "Amount".PadLeft(12));
+                for (int i = 0; i < transCount; i++)
+                {
+                    Console.WriteLine((i + 1) + $"{listF[i].Time}".PadLeft(25) + $"{listF[i].Amount}".PadLeft(12));
+                }
             }
-            Console.WriteLine("No" + "Amount".PadLeft(15) + "Time".PadLeft(30));
-            for (int i = 0; i < transCount; i++)
-            {
-                Console.WriteLine((i + 1) + $"{listF[i].Amount}".PadLeft(16) + $"{listF[i].Time}".PadLeft(30));
-            }
+
         }
     }
 }

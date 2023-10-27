@@ -18,8 +18,10 @@ namespace II._16.Advanced._10.Bankomatas
         }
         public bool PassCheck()
         {
-            Console.WriteLine("You have 3 tries to enter correct code\nPlease enter PIN code:");
+            Console.WriteLine("Please enter PIN code.\nYou have 3 tries.");
+            Console.BackgroundColor = ConsoleColor.DarkGray;
             string input = Console.ReadLine();
+            Console.BackgroundColor = ConsoleColor.Black;
             int userPin;
             int countCheck = 1;
             bool goNext = false;
@@ -34,15 +36,21 @@ namespace II._16.Advanced._10.Bankomatas
                 else if (countCheck <=2 ) 
                 {
                     Console.Clear();
-                    Console.WriteLine($"PIN code was in correct." +
-                        $"\nYou have left {3-countCheck} tries, please to re-enter code:");
+                    Console.Write("PIN code was ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("incorrect.");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine($"\nYou have left {3-countCheck} tries, please to re-enter code:");
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
                     input = Console.ReadLine();
+                    Console.BackgroundColor = ConsoleColor.Black;
                     goNext = false;
                 }
                 else 
                 {
-                    Console.WriteLine("Your card is blocked. Please contact your bank representatives");
+                    Console.WriteLine("Your card was blocked. Please contact your bank representatives.");
                     goNext = false;
+                    Environment.Exit(0);
                     break;
                 }
                 countCheck++;

@@ -36,6 +36,7 @@ namespace II._16.Advanced._10.Bankomatas
                 Console.WriteLine("Your card was accepted.");
                 var account = CardHolder.FirstOrDefault(x => x.GuidNo == userGuid);
                 UserInfo = account;
+                Console.Clear();
             }
             else
             {

@@ -16,10 +16,10 @@ namespace II._16.Advanced._10.Bankomatas
             var random = new Random();
             using (var writer = new StreamWriter("BankInformation.txt"))
             {
-                int accountNo = 25;
+                int accountNo = 12;
                 for (int i = 0; i < accountNo; i++)
                 {
-                    writer.Write(Guid.NewGuid() + " " + random.Next(200, 10000) +
+                    writer.Write(Guid.NewGuid() + " " + random.Next(200, 5000) +
                         " " + random.Next(1000, 9999) + "\n");
                 }
             }

@@ -31,7 +31,7 @@ namespace II._16.Advanced._10.Bankomatas
             DeductAmount = deducted;
             TransCount = transToday.Count;
         }
-        public void TakeMoney()
+        public void ReduceBalance()
         {
             Console.WriteLine("Please enter amount to withdraw:");
             string inPut = Console.ReadLine();
@@ -55,11 +55,11 @@ namespace II._16.Advanced._10.Bankomatas
             }
             else if (cashTrue && (DeductAmount + amount) > MaxAmount)
             {
-                Console.WriteLine($"Your withdraw amount is left for today: {MaxAmount - DeductAmount} Euros.");
+                Console.WriteLine($"The withdraw maximum amount left for today: {MaxAmount - DeductAmount} Euros.");
             }
             else if (cashTrue && TransCount > 10)
             {
-                Console.WriteLine("Limit of withdraw per day is exceeded.");
+                Console.WriteLine("The number of withdrawal per day has been exceeded.");
             }
             else
             {
