@@ -28,7 +28,7 @@ namespace II._16.Advanced._10.Bankomatas
 
                 deducted += data.Amount;
             }
-            DeductAmount = deducted;
+            DeductAmount = -1 * deducted;
             TransCount = transToday.Count;
         }
         public void ReduceBalance()
@@ -36,7 +36,7 @@ namespace II._16.Advanced._10.Bankomatas
             Console.WriteLine("Please enter amount to withdraw:");
             string inPut = Console.ReadLine();
             bool cashTrue = double.TryParse(inPut, out double amount);
-            if (cashTrue && amount <= MaxAmount && (DeductAmount + amount) <= MaxAmount && TransCount < 11)
+            if (cashTrue && amount <= MaxAmount && (DeductAmount + amount) <= MaxAmount && TransCount <= 9)
             {
                 Console.WriteLine("Transfer was succesful.");
                 UserInfo.Balance -= amount;
@@ -44,20 +44,20 @@ namespace II._16.Advanced._10.Bankomatas
                     new TransactionData
                     {
                         Time = DateTime.Now,
-                        Amount = amount,
+                        Amount = -1 * amount,
                     }
                     );
                 TransLeft();
             }
             else if (cashTrue && amount > MaxAmount)
             {
-                Console.WriteLine($"Your with draw amount is above {MaxAmount} limit.");
+                Console.WriteLine($"Your withdraw amount is above {MaxAmount} limit.");
             }
             else if (cashTrue && (DeductAmount + amount) > MaxAmount)
             {
                 Console.WriteLine($"The withdraw maximum amount left for today: {MaxAmount - DeductAmount} Euros.");
             }
-            else if (cashTrue && TransCount > 10)
+            else if (cashTrue && TransCount > 9)
             {
                 Console.WriteLine("The number of withdrawal per day has been exceeded.");
             }
@@ -67,9 +67,6 @@ namespace II._16.Advanced._10.Bankomatas
             }
 
         }
-        public List<TransactionData> GetTransactions()
-        {
-            return TransactionData;
-        }
+
     }
 }

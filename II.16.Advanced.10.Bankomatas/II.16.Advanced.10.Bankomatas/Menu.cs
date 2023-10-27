@@ -12,7 +12,7 @@ namespace II._16.Advanced._10.Bankomatas
         public void Return()
         {
             Thread.Sleep(1000);
-            Console.WriteLine("Press any key to return back:");
+            Console.WriteLine("\nPress any key to return back:");
             Console.ReadKey();
             Console.Clear();
         }
@@ -21,9 +21,9 @@ namespace II._16.Advanced._10.Bankomatas
         {
             Console.Clear();
             Console.WriteLine("Please enter number to make action:" +
-                "\n1. Check Balance." +
-                "\n2. View transaction records." +
-                "\n3. Withdraw." +
+                "\n1. Withdraw." +
+                "\n2. Check Balance." +
+                "\n3. View transaction records." +
                 "\n4. Quit.");
         }
         public int ActionMenu()

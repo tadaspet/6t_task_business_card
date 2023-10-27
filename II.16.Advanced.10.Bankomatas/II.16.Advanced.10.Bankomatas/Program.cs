@@ -16,13 +16,14 @@ namespace II._16.Advanced._10.Bankomatas
             LoginUser newUser = new LoginUser(cardCheck);
             newUser.PassCheck();
 
-            CardBalance userBalance = new CardBalance(newUser);
-            userBalance.ShowBalance();
-
             Transaction withdraw = new Transaction(newUser);
             ViewTransactions records = new ViewTransactions(withdraw);
             
             var menu = new Menu();
+
+            CardBalance userBalance = new CardBalance(newUser);
+            userBalance.ShowBalanceFirstTime();
+
             int selection = 0;
             do
             {
@@ -31,19 +32,20 @@ namespace II._16.Advanced._10.Bankomatas
                 {
                     case 1:
                         {
-                            userBalance.ShowBalance();
+                            withdraw.ReduceBalance();
                             menu.Return();
                             break;
+
                         }
                     case 2:
                         {
-                            records.ShowTransactions();
+                            userBalance.ShowBalance();
                             menu.Return();
                             break;
                         }
                     case 3:
                         {
-                            withdraw.ReduceBalance();
+                            records.ShowTransactions();
                             menu.Return();
                             break;
                         }

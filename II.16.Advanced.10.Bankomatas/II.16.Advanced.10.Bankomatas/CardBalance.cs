@@ -30,5 +30,20 @@ namespace II._16.Advanced._10.Bankomatas
                 Environment.Exit(0);
             }
         }
+        public void ShowBalanceFirstTime()
+        {
+            if (Access)
+            {
+                Console.Clear();
+                Console.WriteLine($"Your account No: {User.GuidNo}" +
+                    $"\nBalance: {User.Balance} Euros.");
+                Thread.Sleep(3000);
+            }
+            else
+            {
+                Console.WriteLine("The card is blocked!");
+                Environment.Exit(0);
+            }
+        }
     }
 }

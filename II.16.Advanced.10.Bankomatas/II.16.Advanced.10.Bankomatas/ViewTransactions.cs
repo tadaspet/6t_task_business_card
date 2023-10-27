@@ -31,7 +31,7 @@ namespace II._16.Advanced._10.Bankomatas
             else if (listF.Count >= 5)
             {
                 transCount = 5;
-                Console.WriteLine("The Last 5 transactions.");
+                Console.WriteLine("The last 5 transactions.");
                 Console.WriteLine("No" + "Time".PadLeft(24) + "Amount".PadLeft(12));
                 for (int i = 0; i < transCount; i++)
                 {
@@ -41,7 +41,7 @@ namespace II._16.Advanced._10.Bankomatas
             else
             {
                 transCount = listF.Count;
-                Console.WriteLine("The Last 5 transactions.");
+                Console.WriteLine("The last 5 transactions.");
                 Console.WriteLine("No" + "Time".PadLeft(24) + "Amount".PadLeft(12));
                 for (int i = 0; i < transCount; i++)
                 {

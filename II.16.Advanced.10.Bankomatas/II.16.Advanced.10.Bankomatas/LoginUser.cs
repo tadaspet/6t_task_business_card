@@ -40,7 +40,7 @@ namespace II._16.Advanced._10.Bankomatas
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("incorrect.");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine($"\nYou have left {3-countCheck} tries, please to re-enter code:");
+                    Console.WriteLine($"\nYou have left {3-countCheck} tries, please re-enter code:");
                     Console.BackgroundColor = ConsoleColor.DarkGray;
                     input = Console.ReadLine();
                     Console.BackgroundColor = ConsoleColor.Black;
