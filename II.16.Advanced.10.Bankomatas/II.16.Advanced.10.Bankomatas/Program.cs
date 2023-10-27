@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace II._16.Advanced._10.Bankomatas
 {
@@ -32,7 +33,12 @@ namespace II._16.Advanced._10.Bankomatas
                 {
                     case 1:
                         {
-                            withdraw.ReduceBalance();
+                            bool repeat = false;
+                            while (!repeat)
+                            {
+                                Console.Clear();
+                                repeat = withdraw.ReduceBalance();                                                            
+                            }
                             menu.Return();
                             break;
 
