@@ -40,7 +40,8 @@ namespace II._16.Advanced._10.Bankomatas
             }
             else
             {
-                Console.WriteLine("Your card was not accepted.");
+                Console.WriteLine("Your card was not accepted." +
+                    "\nGood Bye!");
                 Environment.Exit(0);
             }
         }

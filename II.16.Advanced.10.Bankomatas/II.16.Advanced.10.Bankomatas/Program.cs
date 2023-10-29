@@ -15,7 +15,7 @@ namespace II._16.Advanced._10.Bankomatas
             cardCheck.CheckGuide(cardCheck.GetGuid());
             
             LoginUser newUser = new LoginUser(cardCheck);
-            newUser.PassCheck();
+            newUser.PassCheck(newUser.ReadPINCode());
 
             Transaction withdraw = new Transaction(newUser);
             ViewTransactions records = new ViewTransactions(withdraw);
@@ -37,7 +37,7 @@ namespace II._16.Advanced._10.Bankomatas
                             while (!repeat)
                             {
                                 Console.Clear();
-                                repeat = withdraw.ReduceBalance();                                                            
+                                repeat = withdraw.ReduceBalance(withdraw.ReadWithDrawAmount());
                             }
                             menu.Return();
                             break;

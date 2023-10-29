@@ -30,11 +30,14 @@ namespace II._16.Advanced._10.Bankomatas
             DeductAmount = -1 * deducted;
             TransCount = transToday.Count;
         }
-        public bool ReduceBalance()
+        public string ReadWithDrawAmount()
         {
-            Console.WriteLine("Possible bills: 200, 100, 50, 20, 10" +
+            Console.WriteLine("Possible bills: 200, 100, 50, 20, 10." +
                 "\nPlease enter amount to withdraw:");
-            string inPut = Console.ReadLine();
+            return Console.ReadLine();
+        }
+        public bool ReduceBalance(string inPut)
+        {
             bool cashTrue = int.TryParse(inPut, out int amount);
             string billAnswer;
             bool billCheck = BillCheck(amount, out billAnswer);
@@ -42,7 +45,7 @@ namespace II._16.Advanced._10.Bankomatas
             {
                 if (amount <= MaxAmount && (DeductAmount + amount) <= MaxAmount && TransCount <= 9)
                 {
-                    Console.WriteLine("Transfer was succesful.");
+                    Console.WriteLine("The withdraw was succesful.");
                     UserInfo.Balance -= amount;
                     TransactionData.Add(
                         new TransactionData
@@ -52,11 +55,11 @@ namespace II._16.Advanced._10.Bankomatas
                         }
                         );
                     TransLeft();
-                    Console.WriteLine($"\nPlease take your money:\n{billAnswer}");
+                    Console.WriteLine($"\nPlease take your bill(s):\n{billAnswer}");
                 }
                 else if (amount > MaxAmount)
                 {
-                    Console.WriteLine($"Your withdraw amount is above {MaxAmount} limit.");
+                    Console.WriteLine($"Your withdraw amount is above maximum {MaxAmount} limit.");
                 }
                 else if ((DeductAmount + amount) > MaxAmount)
                 {
@@ -70,20 +73,22 @@ namespace II._16.Advanced._10.Bankomatas
             }
             else if (!cashTrue)
             {
-                Console.WriteLine("Only numbers are accepted.");
-            }
-            else if (amount < 0)
-            {
-                Console.WriteLine("Impossible to withdraw negative amount.");
-            }
-            else if ( amount <20 )
-            {
-                Console.WriteLine("The Amount is too small to withdraw.");
-            }
+                Console.WriteLine("Only numbers are accepted." +
+                    "\nPlease try one more time!");
 
+                Thread.Sleep(2000);
+            }
+            else if ( amount <10 )
+            {
+                Console.WriteLine("The smalles amount to withdraw is 10 Euros." +
+                    "\nPlease try one more time!");
+                Thread.Sleep(2000);
+            }
             else if (!billCheck)
             {
-                Console.WriteLine("The amount does not split in to bills.");
+                Console.WriteLine("The amount does not split in to bills." +
+                    "\nPlease try one more time!");
+                Thread.Sleep(2000);
             }
             return false;
         }
@@ -94,15 +99,15 @@ namespace II._16.Advanced._10.Bankomatas
             };
             StringBuilder newBills = new StringBuilder();
             int tempSum = amount;
-            if(amount % 10 ==0)
+            if(amount % 10 == 0)
             {
                 foreach (var bill in bills.Keys.ToList())
                 {
                     if (tempSum / bill > 0)
                     {
-                        int count = tempSum / bill;
-                        tempSum -= bill * count;
-                        newBills.Append(count + " bills of " + bill + " Eur.\n");
+                            int count = tempSum / bill;
+                            tempSum -= bill * count;
+                            newBills.Append(count + " x " + bill + " Eur.\n");
                     }
                 }
                 moneyBills = newBills.ToString();

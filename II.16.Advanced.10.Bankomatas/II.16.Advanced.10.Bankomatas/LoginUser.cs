@@ -16,12 +16,16 @@ namespace II._16.Advanced._10.Bankomatas
         {
             Account = cardCheck.UserInfo;
         }
-        public bool PassCheck()
+        public string ReadPINCode()
         {
             Console.WriteLine("Please enter PIN code.\nYou have 3 tries.");
             Console.BackgroundColor = ConsoleColor.DarkGray;
             string input = Console.ReadLine();
             Console.BackgroundColor = ConsoleColor.Black;
+            return input;
+        }
+        public bool PassCheck(string input)
+        {
             int userPin;
             int countCheck = 1;
             bool goNext = false;
@@ -37,7 +41,7 @@ namespace II._16.Advanced._10.Bankomatas
                 {
                     Console.Clear();
                     Console.Write("PIN code was ");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.Write("incorrect.");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine($"\nYou have left {3-countCheck} tries, please re-enter code:");
