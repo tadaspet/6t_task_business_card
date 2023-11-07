@@ -1,0 +1,13 @@
+1,Bruschetta,6.50,Appetizers
+2,Shrimp Cocktail,8.00,Appetizers
+3,Tomato Basil Soup,5.00,Soups
+4,Creamy Mushroom Soup,6.00,Soups
+5,Grilled Salmon,15.00,Main course
+6,Chicken Parmesan,13.00,Main course
+7,Beef Lasagna,12.00,Main course
+8,Vegan Burger,11.00,Main course
+9,Tiramisu,6.00,Desserts
+10,Chocolate Lava Cake,6.50,Desserts
+11,Freshly Squeezed Orange Juice,3.50,Drinks
+12,Iced Latte,3.00,Drinks
+13,Sparkling Water,2.50,Drinks
