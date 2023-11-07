@@ -23,7 +23,7 @@ namespace II._16.Advanced._10.Bankomatas
             var menu = new Menu();
 
             CardBalance userBalance = new CardBalance(newUser);
-            userBalance.ShowBalanceFirstTime();
+            userBalance.ShowBalanceFirstTime(); /// do NOT duplicate similar methods
 
             int selection = 0;
             do
@@ -41,7 +41,6 @@ namespace II._16.Advanced._10.Bankomatas
                             }
                             menu.Return();
                             break;
-
                         }
                     case 2:
                         {
@@ -66,7 +65,6 @@ namespace II._16.Advanced._10.Bankomatas
                         }
                 }
             } while (selection > 0 && selection < 5);
-
         }
     }
 }

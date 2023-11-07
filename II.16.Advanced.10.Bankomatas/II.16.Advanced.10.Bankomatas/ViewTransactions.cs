@@ -55,7 +55,6 @@ namespace II._16.Advanced._10.Bankomatas
                 Console.WriteLine($"\n" +
                     $"Total: {total}".PadLeft(38));
             }
-
         }
     }
 }

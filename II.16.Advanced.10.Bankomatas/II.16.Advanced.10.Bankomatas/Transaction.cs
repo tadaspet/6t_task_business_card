@@ -24,7 +24,6 @@ namespace II._16.Advanced._10.Bankomatas
             double deducted = 0;
             foreach (TransactionData data in transToday)
             {
-
                 deducted += data.Amount;
             }
             DeductAmount = -1 * deducted;
