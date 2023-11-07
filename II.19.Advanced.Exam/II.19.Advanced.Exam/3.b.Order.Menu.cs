@@ -76,22 +76,22 @@ namespace II._19.Advanced.Exam
             double count = 0;
             if (items.Count > 0)
             {
-                Console.WriteLine("---------------------------------------");
+                Console.WriteLine("-------------------------------------------------");
                 Console.WriteLine("Cafe C# students" +
-                    $"\n---------------------------------------" +
+                    $"\n-------------------------------------------------" +
                     $"\nTable {tableNo}\n");
 
                 foreach (OrderItem item in items)
                 {
                     MenuItem menuItem = MenuList.First(no => no.SequenceNo == item.MenuNo);
-                    Console.WriteLine($"{menuItem.MealName}".PadRight(25) + $"{menuItem.MealPrice}".PadLeft(5) + $"x {item.Quantity}".PadLeft(3)
+                    Console.WriteLine($"{menuItem.MealName}".PadRight(30) + $"{menuItem.MealPrice}".PadLeft(5) + $" x {item.Quantity}".PadLeft(3)
                         + $"{item.Price} Eur".PadLeft(10));
                     item.IsPaid = true;
                     count += item.Price;
                 }
-                Console.WriteLine("---------------------------------------");
+                Console.WriteLine("-------------------------------------------------");
                 Console.WriteLine($"\n{DateTime.Now}");
-                Console.WriteLine("Total:" + count.ToString().PadLeft(34));
+                Console.WriteLine("Total:" + count.ToString().PadLeft(39) + " Eur");
                 Console.WriteLine();
             }
             else
@@ -110,11 +110,11 @@ namespace II._19.Advanced.Exam
                 foreach (OrderItem item in items)
                 {
                     MenuItem menuItem = MenuList.First(no => no.SequenceNo == item.MenuNo);
-                    Console.WriteLine($"{menuItem.MealName}".PadRight(25) + $"x {item.Quantity}".PadLeft(3)
+                    Console.WriteLine($"{menuItem.MealName}".PadRight(30) + $" x {item.Quantity}".PadLeft(3)
                         + $"{item.Price} Eur".PadLeft(10));
                     count += item.Price;
                 }
-                Console.WriteLine("\nTotal:" + count.ToString().PadLeft(34));
+                Console.WriteLine("\nTotal:" + count.ToString().PadLeft(34) + " Eur");
             }
             else
             {
