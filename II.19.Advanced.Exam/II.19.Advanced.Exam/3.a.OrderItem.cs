@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace II._19.Advanced.Exam
 {
-    internal class OrderItem
+    public class OrderItem
     {
         public int TableID { get; set; }
         public int OrderID { get; set; }

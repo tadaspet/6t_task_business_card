@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace II._19.Advanced.Exam
 {
-    internal class Order : MenuMenu, IOrderCheck
+    public class Order : MenuMenu, IOrderCheck
     {
         public List<MenuItem> MenuList { get; set; }
         public List<OrderItem> Items {  get; set; } = new List<OrderItem>();
@@ -49,9 +49,9 @@ namespace II._19.Advanced.Exam
             int menuMin = 1;
             string menuInput = Console.ReadLine();
             bool menuCheck = int.TryParse(menuInput, out int menuOption);
-            while (menuOption > 13 || menuOption < menuMin || !menuCheck)
+            while (menuOption > MenuList.Count || menuOption < menuMin || !menuCheck)
             {
-                Console.WriteLine("\nWrong input, numbers from 1 to 13 are only accepted.");
+                Console.WriteLine($"\nWrong input, numbers from 1 to {MenuList.Count} are only accepted.");
                 Console.Write("Please re-enter menu choice:");
                 string secondTry = Console.ReadLine();
                 menuCheck = int.TryParse(secondTry, out menuOption);

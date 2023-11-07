@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace II._19.Advanced.Exam
 {
-    internal class TableMenu
+    public class TableMenu
     {
         public List<TableItem> TableList { get; set; }
         const int tableCount = 10;
@@ -45,7 +45,7 @@ namespace II._19.Advanced.Exam
             bool menuCheck = int.TryParse(menuInput, out int menuOption);
             while (menuOption > tableCount || menuOption < menuMin || !menuCheck)
             {
-                Console.WriteLine("\nWrong input, numbers from 1 to 10 are only accepted.");
+                Console.WriteLine($"\nWrong input, numbers from 1 to {tableCount} are only accepted.");
                 Console.Write("Please re-enter Table No.:");
                 string secondTry = Console.ReadLine();
                 menuCheck = int.TryParse(secondTry, out menuOption);

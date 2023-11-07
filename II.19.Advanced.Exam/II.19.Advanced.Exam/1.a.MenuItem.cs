@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace II._19.Advanced.Exam
 {
-    internal class MenuItem
+    public class MenuItem
     {
         public int SequenceNo { get; set; }
         public string MealName { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace II._19.Advanced.Exam
 {
-    internal class MenuMenu
+    public class MenuMenu
     {
         public List<MenuItem> MenuList { get; set; } = new List<MenuItem>();
         const string filePath = "C:\\NETUA2 class exercises\\03112023 Exam Menu\\Menu.txt";
