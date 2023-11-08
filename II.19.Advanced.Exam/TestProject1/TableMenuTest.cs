@@ -18,7 +18,7 @@ namespace ExamUnitTests
             tableMenuClass.SetTableTaken(tableNo);
 
             // Assert
-            Assert.IsFalse(selectedTable.Status);
+            Assert.IsFalse(selectedTable.IsFree);
         }
         [TestMethod]
         public void SetTableEmptyTrue()
@@ -34,7 +34,7 @@ namespace ExamUnitTests
             tableMenuClass.SetTableEmpty(tableNo);
 
             // Assert
-            Assert.IsTrue(selectedTable.Status);
+            Assert.IsTrue(selectedTable.IsFree);
         }
     }
 }

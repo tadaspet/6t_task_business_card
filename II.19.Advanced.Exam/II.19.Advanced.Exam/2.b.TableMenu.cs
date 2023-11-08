@@ -20,7 +20,7 @@ namespace II._19.Advanced.Exam
                     new TableItem
                     {
                         TableNo = i,
-                        Status = true
+                        IsFree = true
                     });
             }
             TableList = tableList;
@@ -33,7 +33,7 @@ namespace II._19.Advanced.Exam
 
             foreach (TableItem table in TableList)
             {
-                string status = table.Status ? "Empty" : "Taken";
+                string status = table.IsFree ? "Empty" : "Taken";
                 Console.WriteLine(table.TableNo.ToString().PadLeft(2) + status.ToString().PadLeft(8));
             }
         }
@@ -59,7 +59,7 @@ namespace II._19.Advanced.Exam
             TableItem selectedTable = TableList.FirstOrDefault(no => no.TableNo == tableNo);
             if (selectedTable != null)
             {
-                selectedTable.Status = false;
+                selectedTable.IsFree = false;
             }
         }
         public void SetTableEmpty(int tableNo)
@@ -67,7 +67,7 @@ namespace II._19.Advanced.Exam
             TableItem selectedTable = TableList.FirstOrDefault(no => no.TableNo == tableNo);
             if (selectedTable != null)
             {
-                selectedTable.Status = true;
+                selectedTable.IsFree = true;
             }
         }
     }

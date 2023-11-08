@@ -9,7 +9,7 @@ namespace II._19.Advanced.Exam
     public class TableItem
     {
         public int TableNo { get; init; }
-        public bool Status { get; set; }
+        public bool IsFree { get; set; }
 
     }
 }
