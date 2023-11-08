@@ -20,8 +20,10 @@ namespace II._19.Advanced.Exam
         {
             Console.WriteLine("Enter Menu item number:");
             int menuNo = MenuNoSelection();
+
             Console.WriteLine("Enter item quantity:");
             int menuNoQuantity = MenuNoSelection();
+
             double price = PriceCount(menuNo, menuNoQuantity);
             Items.Add(new OrderItem
                 {
@@ -48,7 +50,9 @@ namespace II._19.Advanced.Exam
         {
             int menuMin = 1;
             string menuInput = Console.ReadLine();
+
             bool menuCheck = int.TryParse(menuInput, out int menuOption);
+
             while (menuOption > MenuList.Count || menuOption < menuMin || !menuCheck)
             {
                 Console.WriteLine($"\nWrong input, numbers from 1 to {MenuList.Count} are only accepted.");

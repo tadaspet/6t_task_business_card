@@ -13,15 +13,6 @@
             Order newOrder = new Order(foodMenu);
             UINavigation actionMenu = new UINavigation();
 
-            //do
-            //{
-            //    newOrder.CollectOrderInfo(tableNo);
-            //} while (actionMenu.MenuChoice() == UINavigation.UserChoice.Continue);
-            
-            //newOrder.OrderCheck(tableNo);
-
-            //table.PrintTableList();
-
             int menuOption = 0;
             const int mainMenuMax = 4;
             const int subMenuMax = 3;

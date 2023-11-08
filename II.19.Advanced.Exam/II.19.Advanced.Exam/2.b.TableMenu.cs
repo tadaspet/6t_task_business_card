@@ -30,6 +30,7 @@ namespace II._19.Advanced.Exam
         {
             Console.WriteLine("Table List\n" +
                 $"{ "No.".PadLeft(3)} {"Status".PadLeft(7)}");
+
             foreach (TableItem table in TableList)
             {
                 string status = table.Status ? "Empty" : "Taken";
