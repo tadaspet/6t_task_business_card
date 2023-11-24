@@ -23,7 +23,7 @@ namespace III._6.DataBases._8.lesson
             //var herbert = new Author { LastName = "Herbert" };
             //var card = new Author { LastName = "Card" };
 
-            //dbContext.Authors.AddRange(tolkien, adams,herbert,card);
+            //dbContext.Authors.AddRange(tolkien, adams, herbert, card);
             //dbContext.SaveChanges();
 
             //var hobbit = new Book { Title = "The Hobbit", Year = 1937, Author = tolkien };
@@ -51,24 +51,24 @@ namespace III._6.DataBases._8.lesson
 
             //dbContext.SaveChanges();
 
-            using var dbContext = new BookContext();
+            //using var dbContext = new BookContext();
 
-            var booksSelect = dbContext.Books
-                .Include(b => b.Author)
-                .Include(b=>b.BookCategories)
-                .ThenInclude(c=>c.Category)
-                .Where(b => b.Year < 1975);
+            //var booksSelect = dbContext.Books
+            //    .Include(b => b.Author)
+            //    .Include(b=>b.BookCategories)
+            //    .ThenInclude(c=>c.Category)
+            //    .Where(b => b.Year < 1975);
 
-            foreach (var book in booksSelect)
-            {
-                Console.WriteLine(book.Title);
+            //foreach (var book in booksSelect)
+            //{
+            //    Console.WriteLine(book.Title);
 
-                foreach(var category in book.BookCategories)
-                {
-                    Console.WriteLine(category.Category.CategoryName);
-                }
-                Console.WriteLine(book.Author.LastName+"\n");
-            }
+            //    foreach(var category in book.BookCategories)
+            //    {
+            //        Console.WriteLine(category.Category.CategoryName);
+            //    }
+            //    Console.WriteLine(book.Author.LastName+"\n");
+            //}
 
         }
     }

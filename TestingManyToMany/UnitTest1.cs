@@ -9,15 +9,15 @@ namespace TestingManyToMany
     {
         private BookContext dbContext;
         [TestInitialize]
-        public void OnInit()
-        {
-            dbContext = new BookContext(new DbContextOptionsBuilder<BookContext>()
-                //.UseInMemoryDatabase(databaseName: "BookContext" + Guid.NewGuid())
-                .UseSqlServer($"Server=(localdb)\\mssqllocaldb;Database=BookCategories;Trusted_Connection=True;")
-                .Options);
-            dbContext.Database.EnsureDeleted();
-            dbContext.Database.EnsureCreated();
-        }
+        //public void OnInit()
+        //{
+        //    dbContext = new BookContext(new DbContextOptionsBuilder<BookContext>()
+        //        .UseInMemoryDatabase(databaseName: "BookContext" + Guid.NewGuid())
+        //        .UseSqlServer($"Server=(localdb)\\mssqllocaldb;Database=BookCategories;Trusted_Connection=True;")
+        //        .Options);
+        //    dbContext.Database.EnsureDeleted();
+        //    dbContext.Database.EnsureCreated();
+        //}
         [TestMethod]
         public void TestMethod1()
         {

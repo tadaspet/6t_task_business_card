@@ -5,9 +5,11 @@ VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "III.6.DataBases.8.lesson", "III.6.DataBases.8.lesson.csproj", "{26C874CB-B50C-4656-8B12-BFACAB968795}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingManyToMany", "..\TestingManyToMany\TestingManyToMany.csproj", "{93346031-7B95-47C1-8ADD-7E7D74D05FD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingManyToMany", "..\TestingManyToMany\TestingManyToMany.csproj", "{93346031-7B95-47C1-8ADD-7E7D74D05FD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1", "..\Task1\Task1.csproj", "{64BDDEB1-3F14-47D4-AEA7-AB73F8B11366}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task1", "..\Task1\Task1.csproj", "{64BDDEB1-3F14-47D4-AEA7-AB73F8B11366}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonelSystem", "..\StoredProcedures\PersonelSystem.csproj", "{8AC75316-A252-4699-87EF-6C041E21906C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{64BDDEB1-3F14-47D4-AEA7-AB73F8B11366}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64BDDEB1-3F14-47D4-AEA7-AB73F8B11366}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64BDDEB1-3F14-47D4-AEA7-AB73F8B11366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AC75316-A252-4699-87EF-6C041E21906C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AC75316-A252-4699-87EF-6C041E21906C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AC75316-A252-4699-87EF-6C041E21906C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AC75316-A252-4699-87EF-6C041E21906C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

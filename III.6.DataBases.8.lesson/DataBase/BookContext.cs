@@ -21,7 +21,7 @@ namespace III._6.DataBases._8.lesson.DataBase
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);  // galima istrinti
+            /*base.OnModelCreating(modelBuilder); */ // galima istrinti
 
             // cia mes konfiguruojame sarysi daug su daug
 
@@ -40,8 +40,8 @@ namespace III._6.DataBases._8.lesson.DataBase
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           
-            if(!optionsBuilder.IsConfigured)
+
+            if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
                     //.UseLazyLoadingProxies()
