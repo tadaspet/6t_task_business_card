@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteMakerAPI", "NoteMakerAPI.csproj", "{4E81D296-B845-4596-97C9-CC4EA38C50A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteMakerApiBLL", "..\NoteMakerApiBLL\NoteMakerApiBLL.csproj", "{39C9B876-539C-45E1-A51B-7EB4F9BC4264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteMakerApiDAL", "..\NoteMakerApiDAL\NoteMakerApiDAL.csproj", "{DD8BFFB7-4394-4F5A-AA18-D8A687EC53B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E81D296-B845-4596-97C9-CC4EA38C50A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E81D296-B845-4596-97C9-CC4EA38C50A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E81D296-B845-4596-97C9-CC4EA38C50A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E81D296-B845-4596-97C9-CC4EA38C50A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39C9B876-539C-45E1-A51B-7EB4F9BC4264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39C9B876-539C-45E1-A51B-7EB4F9BC4264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39C9B876-539C-45E1-A51B-7EB4F9BC4264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39C9B876-539C-45E1-A51B-7EB4F9BC4264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD8BFFB7-4394-4F5A-AA18-D8A687EC53B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD8BFFB7-4394-4F5A-AA18-D8A687EC53B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD8BFFB7-4394-4F5A-AA18-D8A687EC53B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD8BFFB7-4394-4F5A-AA18-D8A687EC53B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91BD0A59-AE03-4EB6-8379-68B0DE6724F8}
+	EndGlobalSection
+EndGlobal

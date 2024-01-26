@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteKeeper.Api", "NoteKeeper.Api.csproj", "{CF9F6D3D-22D5-4A28-A00F-212E637E468E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteKeeper.Api.DAL", "..\NoteKeeper.Api.DAL\NoteKeeper.Api.DAL.csproj", "{4AC12D81-EFB2-4BF4-889A-61DDE895CF39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteKeeper.Api.BLL", "..\NoteKeeper.Api.BLL\NoteKeeper.Api.BLL.csproj", "{BFEB3100-1506-4016-BFD5-99C3A5C541EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF9F6D3D-22D5-4A28-A00F-212E637E468E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF9F6D3D-22D5-4A28-A00F-212E637E468E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF9F6D3D-22D5-4A28-A00F-212E637E468E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF9F6D3D-22D5-4A28-A00F-212E637E468E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AC12D81-EFB2-4BF4-889A-61DDE895CF39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC12D81-EFB2-4BF4-889A-61DDE895CF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC12D81-EFB2-4BF4-889A-61DDE895CF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC12D81-EFB2-4BF4-889A-61DDE895CF39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFEB3100-1506-4016-BFD5-99C3A5C541EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEB3100-1506-4016-BFD5-99C3A5C541EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEB3100-1506-4016-BFD5-99C3A5C541EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEB3100-1506-4016-BFD5-99C3A5C541EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC11BF35-00AA-419E-A858-60B7EB65F654}
+	EndGlobalSection
+EndGlobal

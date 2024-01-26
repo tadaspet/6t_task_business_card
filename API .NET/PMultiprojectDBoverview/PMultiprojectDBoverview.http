@@ -1,0 +1,6 @@
+@PMultiprojectDBoverview_HostAddress = http://localhost:5211
+
+GET {{PMultiprojectDBoverview_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
