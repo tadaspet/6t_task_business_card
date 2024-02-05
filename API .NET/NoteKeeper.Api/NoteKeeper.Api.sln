@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteKeeper.Api", "NoteKeeper.Api.csproj", "{CF9F6D3D-22D5-4A28-A00F-212E637E468E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteKeeper.Api", "NoteKeeper.Api.csproj", "{CF9F6D3D-22D5-4A28-A00F-212E637E468E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteKeeper.Api.DAL", "..\NoteKeeper.Api.DAL\NoteKeeper.Api.DAL.csproj", "{4AC12D81-EFB2-4BF4-889A-61DDE895CF39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteKeeper.Api.DAL", "..\NoteKeeper.Api.DAL\NoteKeeper.Api.DAL.csproj", "{4AC12D81-EFB2-4BF4-889A-61DDE895CF39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteKeeper.Api.BLL", "..\NoteKeeper.Api.BLL\NoteKeeper.Api.BLL.csproj", "{BFEB3100-1506-4016-BFD5-99C3A5C541EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteKeeper.Api.BLL", "..\NoteKeeper.Api.BLL\NoteKeeper.Api.BLL.csproj", "{BFEB3100-1506-4016-BFD5-99C3A5C541EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

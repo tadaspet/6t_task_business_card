@@ -17,4 +17,8 @@
     <Folder Include="CustomValidations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NoteKeeper.Api.BLL\NoteKeeper.Api.BLL.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NoteKeeper.Api\NoteKeeper.Api.csproj" />
+    <ProjectReference Include="..\NoteKeeper.Api.DAL\NoteKeeper.Api.DAL.csproj" />
   </ItemGroup>
 
 </Project>
