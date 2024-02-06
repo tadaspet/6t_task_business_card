@@ -26,12 +26,7 @@ namespace RegisterPersonAPI
             builder.Services.AddDataLayer();
             builder.Services.AddTransient<IUserMapper, UserMapper>();
             builder.Services.AddTransient<IPersonInfoMapper, PersonInfoMapper>();
-
-            //builder.Services.AddCors(options => 
-            //    options.AddPolicy("AllowLocalhost", builder => builder.WithOrigins("http://127.0.0.1:5500")
-            //                  .AllowAnyHeader()
-            //                  .AllowAnyMethod())
-            //);
+            builder.Services.AddTransient<ISettlementMapper, SettlementMapper>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -97,7 +92,7 @@ namespace RegisterPersonAPI
             }
 
             app.UseHttpsRedirection();
-            //app.UseCors("AllowLocalhost");
+
             app.UseCors(builder =>
             {
                 builder
