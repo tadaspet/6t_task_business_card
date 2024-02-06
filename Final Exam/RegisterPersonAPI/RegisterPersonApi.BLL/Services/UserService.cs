@@ -1,12 +1,7 @@
 ﻿using RegisterPersonApi.BLL.Services.Interfaces;
 using RegisterPersonApi.DAL.Entities;
 using RegisterPersonApi.DAL.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RegisterPersonApi.BLL.Services
 {

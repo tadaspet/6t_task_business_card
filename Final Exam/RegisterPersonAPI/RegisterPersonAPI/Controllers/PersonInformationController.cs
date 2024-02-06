@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RegisterPersonApi.BLL.Services.Interfaces;
 using RegisterPersonAPI.Dtos.Requests;
@@ -21,8 +20,8 @@ namespace RegisterPersonAPI.Controllers
         private readonly IPersonInformaitonService _personService;
 
         public PersonInformationController(
-            ILogger<PersonInformationController> logger, 
-            IPersonInfoMapper mapper, 
+            ILogger<PersonInformationController> logger,
+            IPersonInfoMapper mapper,
             IPersonInformaitonService personService)
         {
             _logger = logger;
@@ -102,7 +101,7 @@ namespace RegisterPersonAPI.Controllers
             }
 
             _logger.LogInformation($"Person Information successfully created for {userNameIdentifier}.");
-            return Created(nameof(GetPersonInformation), new {id = dbPersonInfo});
+            return Created(nameof(GetPersonInformation), new { id = dbPersonInfo });
         }
 
         /// <summary>

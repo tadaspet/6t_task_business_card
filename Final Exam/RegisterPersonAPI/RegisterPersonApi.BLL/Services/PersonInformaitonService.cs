@@ -1,11 +1,6 @@
 ﻿using RegisterPersonApi.BLL.Services.Interfaces;
 using RegisterPersonApi.DAL.Entities;
 using RegisterPersonApi.DAL.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RegisterPersonApi.BLL.Services
 {
@@ -17,9 +12,9 @@ namespace RegisterPersonApi.BLL.Services
         {
             _personRepo = personRepo;
         }
-        public PersonInformation GetPersonalInformation(Guid personId)
+        public PersonInformation GetPersonalInformation(Guid userId)
         {
-            return _personRepo.GetPersonalInformation(personId);
+            return _personRepo.GetPersonalInformation(userId);
         }
         public int AddNewPersonInformation(PersonInformation personInfo)
         {

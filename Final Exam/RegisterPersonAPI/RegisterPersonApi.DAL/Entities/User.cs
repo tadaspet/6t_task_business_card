@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace RegisterPersonApi.DAL.Entities
+﻿namespace RegisterPersonApi.DAL.Entities
 {
     public class User
     {

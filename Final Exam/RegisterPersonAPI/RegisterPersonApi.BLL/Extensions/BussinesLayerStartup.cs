@@ -11,6 +11,7 @@ namespace RegisterPersonApi.BLL.Extensions
             services.AddTransient<IJwtService, JwtService>();
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IPersonInformaitonService, PersonInformaitonService>();
+            services.AddTransient<ISettlementService, SettlementService>();
         }
     }
 }
