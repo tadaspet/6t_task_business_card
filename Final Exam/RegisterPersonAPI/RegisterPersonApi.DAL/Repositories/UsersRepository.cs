@@ -42,26 +42,33 @@ namespace RegisterPersonApi.DAL.Repositories
         public bool DeleteUserAndAllInformation(Guid userId)
         {
             var user = _dbContex.Users.FirstOrDefault(u => u.Id == userId);
-            if(user is null)
+            if(user == null)
             {
                 return false;
             }
             var personInformation = _dbContex.PersonInformations.FirstOrDefault(u => u.UserId == userId);
 
-            if(personInformation != null)
+            if(personInformation == null)
             {
-                var imageFile = _dbContex.ImageFiles.FirstOrDefault(i => i.PersonInformationId == personInformation.Id);
-                var setlement = _dbContex.Settlements.FirstOrDefault(s => s.PersonInformationId == personInformation.Id);
-
                 _dbContex.Users.Remove(user);
-                _dbContex.PersonInformations.Remove(personInformation);
-                _dbContex.ImageFiles.Remove(imageFile);
-                _dbContex.Settlements.Remove(setlement);
-
                 _dbContex.SaveChanges();
                 return true;
             }
+
+            var imageFile = _dbContex.ImageFiles.FirstOrDefault(i => i.PersonInformationId == personInformation.Id);
+            var setlement = _dbContex.Settlements.FirstOrDefault(s => s.PersonInformationId == personInformation.Id);
+
+            if (imageFile != null)
+            {
+                _dbContex.ImageFiles.Remove(imageFile);                    
+            }
+            if(setlement != null)
+            {
+                _dbContex.Settlements.Remove(setlement);
+            }
+            _dbContex.PersonInformations.Remove(personInformation);
             _dbContex.Users.Remove(user);
+
             _dbContex.SaveChanges();
 
             return true;
