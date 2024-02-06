@@ -34,7 +34,8 @@ namespace RegisterPersonAPI.Controllers
         /// </summary>
         /// <returns></returns>
         /// <response code="200">Person Information sent</response>
-        /// <response code="403">Unauthorised atempt</response>
+        /// <response code="401">Unauthorised access</response>
+        /// <response code="403">Forbidden atempt</response>
         /// <response code="404">Person Information not found</response>
         /// <response code="500">Server error</response>
         [HttpGet]
@@ -56,6 +57,7 @@ namespace RegisterPersonAPI.Controllers
             }
 
             var dbPersonInfo = _personService.GetPersonalInformation(userGuid);
+
             if (dbPersonInfo == null)
             {
                 _logger.LogWarning($"Person Information for {userNameIdentifier} not found.");
@@ -73,7 +75,8 @@ namespace RegisterPersonAPI.Controllers
         /// <returns></returns>
         /// <response code="201">Person Information created</response>
         /// <response code="400">Person Information was created before</response>
-        /// <response code="403">Unauthorised atempt</response>
+        /// <response code="401">Unauthorised access</response>
+        /// <response code="403">Forbidden atempt</response>
         /// <response code="500">Server error</response>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
@@ -87,13 +90,16 @@ namespace RegisterPersonAPI.Controllers
             _logger.LogInformation($"Post Person Information attempt for {userNameIdentifier}.");
 
             var checkGuid = Guid.TryParse(userNameIdentifier, out var userGuid);
+
             if (!checkGuid)
             {
-                _logger.LogWarning($"Unauthorised attempt to GET Person Information {userNameIdentifier}.");
+                _logger.LogWarning($"Unauthorised attempt to POST Person Information {userNameIdentifier}.");
                 return Forbid("Unauthorised access.");
             }
+
             var entity = _mapper.Map(postDto, userGuid);
             var dbPersonInfo = _personService.AddNewPersonInformation(entity);
+
             if (dbPersonInfo == 0)
             {
                 _logger.LogWarning($"Person Information for {userNameIdentifier} is already created.");
@@ -111,7 +117,8 @@ namespace RegisterPersonAPI.Controllers
         /// <returns></returns>
         /// <response code="204">Person Information updated</response>
         /// <response code="404">Person Information was not found</response>
-        /// <response code="403">Unauthorised atempt</response>
+        /// <response code="401">Unauthorised access</response>
+        /// <response code="403">Forbidden atempt</response>
         /// <response code="500">Server error</response>
         [HttpPut]
         [Produces(MediaTypeNames.Application.Json)]
@@ -125,13 +132,16 @@ namespace RegisterPersonAPI.Controllers
             _logger.LogInformation($"Put Person Information attempt for {userNameIdentifier}.");
 
             var checkGuid = Guid.TryParse(userNameIdentifier, out var userGuid);
+
             if (!checkGuid)
             {
                 _logger.LogWarning($"Unauthorised attempt to PUT Person Information of {userNameIdentifier}.");
                 return Forbid("Unauthorised access.");
             }
+
             var entity = _mapper.Map(postDto, userGuid);
             var dbPersonInfo = _personService.UpdatePersonInformaiton(entity);
+
             if (dbPersonInfo == false)
             {
                 _logger.LogWarning($"Person Information for {userNameIdentifier} is not found.");

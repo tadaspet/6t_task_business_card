@@ -7,7 +7,7 @@ namespace RegisterPersonAPI.Mappers
 {
     public class SettlementMapper : ISettlementMapper
     {
-        public Settlement Map(SettlementRequestDto Dto)
+        public Settlement Map(SettlementRequestDto Dto, int personInfoId)
         {
             var entity = new Settlement
             {
@@ -15,6 +15,7 @@ namespace RegisterPersonAPI.Mappers
                 Street = Dto.Street,
                 BuildingNo = Dto.BuildingNo,
                 FlatNo = Dto.FlatNo == null ? null : Dto.FlatNo.ToString(),
+                PersonInformationId = personInfoId
             };
             return entity;
         }

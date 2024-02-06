@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace RegisterPersonAPI.Dtos.Results
+﻿namespace RegisterPersonAPI.Dtos.Results
 {
     public class SettlementResultDto
     {
