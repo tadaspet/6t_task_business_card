@@ -11,6 +11,7 @@ namespace RegisterPersonApi.DAL.Extensions
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IPersonInformationRepository, PersonInformationRepository>();
             services.AddScoped<ISettlementRepository, SettlementRepository>();
+            services.AddScoped<IImageFileRepository, ImageFileRepository>();
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RegisterPersonApi.DAL.ApiDbContext;
 
@@ -11,9 +12,11 @@ using RegisterPersonApi.DAL.ApiDbContext;
 namespace RegisterPersonApi.DAL.Migrations
 {
     [DbContext(typeof(RegisterDbContext))]
-    partial class RegisterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240206192746_RemovedImageFileLastModifiedProperty")]
+    partial class RemovedImageFileLastModifiedProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

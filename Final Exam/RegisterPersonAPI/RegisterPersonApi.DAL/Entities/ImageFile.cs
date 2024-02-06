@@ -10,7 +10,6 @@ namespace RegisterPersonApi.DAL.Entities
         public int Size { get; set; }
         public byte[] Content { get; set; }
         public DateTime CreationDate { get; set; }
-        public DateTime? LastModified { get; set; }
         public int PersonInformationId { get; set; }
         [ForeignKey("PersonInformationId")]
         public PersonInformation PersonInformation { get; set; }
