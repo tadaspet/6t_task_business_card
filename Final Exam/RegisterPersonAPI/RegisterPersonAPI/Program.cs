@@ -27,6 +27,7 @@ namespace RegisterPersonAPI
             builder.Services.AddTransient<IUserMapper, UserMapper>();
             builder.Services.AddTransient<IPersonInfoMapper, PersonInfoMapper>();
             builder.Services.AddTransient<ISettlementMapper, SettlementMapper>();
+            builder.Services.AddTransient<IImageFileMapper, ImageFileMapper>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

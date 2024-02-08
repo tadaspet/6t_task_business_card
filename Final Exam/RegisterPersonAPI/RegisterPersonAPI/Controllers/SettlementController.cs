@@ -56,8 +56,8 @@ namespace RegisterPersonAPI.Controllers
 
             if (!checkGuid)
             {
-                _logger.LogWarning($"Unauthorised attempt to GET Settlement {userNameIdentifier}.");
-                return Forbid("Unauthorised access.");
+                _logger.LogWarning($"Forbidden attempt to GET Settlement for ID: {userNameIdentifier}.");
+                return Forbid("Forbidden access.");
             }
 
             var dbSettlementInfo = _settlService.GetSettlement(userGuid);
@@ -80,7 +80,7 @@ namespace RegisterPersonAPI.Controllers
         /// <response code="400">Settlement was created before</response>
         /// <response code="401">Unauthorised access</response>
         /// <response code="403">Forbidden atempt</response>
-        /// <response code="404">Information not found</response>
+        /// <response code="404">Neccessary Person Informtion was not found</response>
         /// <response code="500">Server error</response>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
@@ -98,8 +98,8 @@ namespace RegisterPersonAPI.Controllers
 
             if (!checkGuid)
             {
-                _logger.LogWarning($"Unauthorised attempt to POST Settlement {userNameIdentifier}.");
-                return Forbid("Unauthorised access.");
+                _logger.LogWarning($"Forbidden attempt to POST Settlement for ID: {userNameIdentifier}.");
+                return Forbid("Forbidden access.");
             }
 
             var dbPersonInfo = _personInfoService.GetPersonalInformation(userGuid);
@@ -131,7 +131,7 @@ namespace RegisterPersonAPI.Controllers
         /// <response code="204">Settlement updated</response>
         /// <response code="401">Unauthorised access</response>
         /// <response code="403">Forbidden atempt</response>
-        /// <response code="404">Settlement was not found</response>
+        /// <response code="404">Neccessary Person Informtion was not found</response>
         /// <response code="500">Server error</response>
         [HttpPut]
         [Produces(MediaTypeNames.Application.Json)]
@@ -149,15 +149,15 @@ namespace RegisterPersonAPI.Controllers
 
             if (!checkGuid)
             {
-                _logger.LogWarning($"Unauthorised attempt to PUT Settlement of {userNameIdentifier}.");
-                return Forbid("Unauthorised access.");
+                _logger.LogWarning($"Forbidden attempt to PUT Settlement of ID: {userNameIdentifier}.");
+                return Forbid("Forbidden access.");
             }
             var dbPersonInfo = _personInfoService.GetPersonalInformation(userGuid);
 
             if(dbPersonInfo == null)
             {
-                _logger.LogWarning($"Settlement for {userNameIdentifier} is not found.");
-                return NotFound("Settlement was not found.");
+                _logger.LogWarning($"Person Informtion for {userNameIdentifier} is not found.");
+                return NotFound("Person Informtion was not found.");
             }
 
             var entity = _mapper.Map(postDto, dbPersonInfo.Id);

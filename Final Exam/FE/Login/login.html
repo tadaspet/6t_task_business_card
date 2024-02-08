@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Person Registration Login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../BootStrapCSS/bootstrap.css">
+        <link rel="icon" href="../Images/dotnet-logo.ico" type="Images/x-icon">
+    </head>
+    <body class="bg-primary-subtle">
+        <header class="text-center">         
+            <h1 class="my-5 text-primary-emphasis">Log in</h1>
+        </header>
+        <main>
+            <div class="container-fluid text-center">
+                <div class="row justify-content-center">
+                  <div class="col-4 w-25">
+                    <div id="liveAlertPlaceholder">                
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <form id="loginForm">
+                <div class="container-fluid border rounded-5 w-25 border-primary-subtle p-4" id="loginDiv">
+                    <div class="form-floating mb-3">
+                        <input class="form-control form-control-md" type="text" id="inputUserName" placeholder="Username:" aria-label="Enter user name">
+                        <label for="inputUserName" class="form-label">Username:</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control form-control-md" type="password" id="inputPassword" placeholder="Password:" aria-label="Enter password">
+                        <label for="inputPassword" class="form-label">Password:</label>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary btn-md" id="login">Log-in</button>
+                    </div>
+                </div> 
+            </form>  
+        </main>
+        <footer>
+            <div class="text-center my-5 text-primary-emphasis">CopyRight #NETUA2_TP</div>
+        </footer>
+        <script src="login.js" async defer></script>
+        <script src="../BootStrapJS/bootstrap.bundle.js"></script>
+    </body>
+</html>

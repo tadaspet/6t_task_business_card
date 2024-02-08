@@ -34,8 +34,8 @@ namespace RegisterPersonAPI.Controllers
         /// </summary>
         /// <param name="userLogin"></param>
         /// <returns>token value</returns>
-        /// <response code="400">User validation error</response>
         /// <response code="200">Success, the user was logged in.</response>
+        /// <response code="400">User validation error</response>
         /// <response code="500">Server error</response>
         [HttpPost("login")]
         [Produces(MediaTypeNames.Application.Json)]
@@ -68,24 +68,42 @@ namespace RegisterPersonAPI.Controllers
         /// </summary>
         /// <param name="createUser"></param>
         /// <returns>No contents</returns>
-        /// <response code="400">User already exists in the database</response>
         /// <response code="201">Success, the new user was saved to database</response>
+        /// <response code="400">User already exists in the database</response>
         /// <response code="500">Server error</response>
         [HttpPost("sign-up")]
         [Produces(MediaTypeNames.Application.Json)]
         [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
         public IActionResult SignUp(UserCreateRequestDto createUser)
         {
             _logger.LogInformation($"Creating account for {createUser.UserName}");
+
+            var userNameExists = _usersRepository.GetUserByUsername(createUser.UserName);
+            if (userNameExists != null)
+            {
+                _logger.LogWarning($"User with the username {createUser.Email} already exists");
+                return Conflict("Username is already taken.");
+            }
+
+            var userEmailExists = _usersRepository.GetUserByEmail(createUser.Email);
+            if (userEmailExists != null)
+            {
+                _logger.LogWarning($"User with email {createUser.Email} already exists");
+                return Conflict("User already exists with provided email.");
+            }
+
             var user = _userMapper.Map(createUser);
             var userId = _usersService.Signup(user);
+
             if (userId == Guid.Empty)
             {
                 _logger.LogWarning($"User {createUser.UserName} already exists");
                 return BadRequest("User already exists in the database");
             }
+
             _logger.LogInformation($"Creating user by name {createUser.UserName}, id {userId.ToString().ToUpper()}");
             return Created("", new { id = userId });
         }
@@ -97,7 +115,7 @@ namespace RegisterPersonAPI.Controllers
         /// <returns></returns>
         /// <response code="204">User Deleted</response>
         /// <response code="400">User ID does not exists</response>
-        /// <response code="403">Unauthorised atempt</response>
+        /// <response code="403">Forbidden access</response>
         /// <response code="404">User not found</response>
         /// <response code="500">Server error</response>
         [Authorize(Roles = "Admin")]
@@ -109,27 +127,26 @@ namespace RegisterPersonAPI.Controllers
         public IActionResult Delete(Guid id)
         {
             var userNameIdentifier = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             _logger.LogWarning($"Delete attempt for user {id}");
             var checkGuid = Guid.TryParse(userNameIdentifier, out var userGuid);
-            var userExists = _usersRepository.GetUserByGuid(userGuid);
             if(!checkGuid)
             {
-                _logger.LogWarning($"Unauthorised attempt to delete {id}");
-                return Forbid();
+                _logger.LogWarning($"Forbidden attempt to delete for {userNameIdentifier}");
+                return Forbid("Forbidden access.");
             }
 
+            var userExists = _usersRepository.GetUserByGuid(userGuid);
             if (userExists == null)
             {
                 _logger.LogInformation($"Account {id} not found");
-                return BadRequest();
+                return BadRequest("User not found.");
             }
 
             _logger.LogInformation($"Deleting account {id}");
             var userDeleted = _usersService.DeleteUserAndInformation(id);
             if (!userDeleted)
             {
-                _logger.LogInformation($"Account {id} not found");
+                _logger.LogInformation($"Failed to delete {id}");
                 return NotFound("User not found");
             }
             _logger.LogInformation($"Account {id} was deleted");

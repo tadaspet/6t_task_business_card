@@ -17,6 +17,14 @@ namespace RegisterPersonApi.DAL.Repositories
         {
             return _dbContex.Users.FirstOrDefault(u => u.Username == userName);
         }
+        public User GetUserByEmail(string email)
+        {
+            return _dbContex.Users.FirstOrDefault(u => u.Email == email);
+        }
+        public User GetUserByUsername(string username)
+        {
+            return _dbContex.Users.FirstOrDefault(u => u.Username == username);
+        }
         public User GetUserByGuid(Guid userId)
         {
             var user = _dbContex.Users.FirstOrDefault(u => u.Id == userId);

@@ -2,6 +2,7 @@
 using RegisterPersonApi.DAL.Entities;
 using RegisterPersonApi.DAL.Repositories.Interfaces;
 using System.Drawing;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace RegisterPersonApi.BLL.Services
 {
@@ -37,8 +38,13 @@ namespace RegisterPersonApi.BLL.Services
             return _repository.GetImageFile(userId);
         }
 
-        public int AddImageFile(ImageFile imageFile)
+        public int AddImageFile(ImageFile imageFile, Guid userId)
         {
+            var dbimageFile = _repository.GetImageFile(userId);
+            if (dbimageFile != null)
+            {
+                _repository.DeleteImageFile(dbimageFile.Id);
+            }
             return _repository.AddImageFile(imageFile);
         }
 
