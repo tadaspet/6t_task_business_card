@@ -15,7 +15,7 @@ namespace RegisterPersonAPI.CustomValidation
         {
             if (value is IFormFile file && file.Length > _maxFileSize)
             {
-                return new ValidationResult($"Maximum allowed file size is {_maxFileSize} bytes.");
+                return new ValidationResult($"Maximum allowed file size is {_maxFileSize/1024/1024} MegaBytes.");
             }
             return ValidationResult.Success;
         }

@@ -23,7 +23,7 @@ window.onload = () => {
             if (response.ok){
                 const data = await response.json();
                 sessionStorage.setItem('User', data);
-                window.location.href='../RegisterPerson/home.html';
+                window.location.href='../RegisterPerson/ProfilePhoto/ProfilePhoto.html';
             } else {
                 // deleteError();
                 const text = await response.text ()

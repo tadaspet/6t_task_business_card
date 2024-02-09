@@ -17,7 +17,7 @@ namespace RegisterPersonAPI.Dtos.Requests
         [Phone(ErrorMessage = "Phone number can include digits, spaces, parentheses, hyphens, periods and plus sign.")]
         public string PhoneNo { get; set; }
         [Required]
-        [EmailAddress(ErrorMessage = "Email is not a valid email address")]
+        [RegularExpression(@"^(?=.*[A-Za-z])[A-Za-z0-9]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", ErrorMessage = "Email is not a valid.")]
         public string Email { get; set; }
     }
 }
