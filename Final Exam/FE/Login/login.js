@@ -23,7 +23,7 @@ window.onload = () => {
             if (response.ok){
                 const data = await response.json();
                 sessionStorage.setItem('User', data);
-                window.location.href='../ToDoApp/todo.html';
+                window.location.href='../RegisterPerson/home.html';
             } else {
                 // deleteError();
                 const text = await response.text ()

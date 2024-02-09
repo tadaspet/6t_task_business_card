@@ -14,7 +14,7 @@ namespace RegisterPersonAPI.Dtos.Requests
         [StringLength(20, MinimumLength = 10, ErrorMessage = "IdentityCode can't be longer than 20 characters and shorter than 10 characters.")]
         public string IdentityCode { get; set; }
         [Required]
-        [Phone(ErrorMessage = "PhoneNo is not a valid phone number")]
+        [Phone(ErrorMessage = "Phone number can include digits, spaces, parentheses, hyphens, periods and plus sign.")]
         public string PhoneNo { get; set; }
         [Required]
         [EmailAddress(ErrorMessage = "Email is not a valid email address")]

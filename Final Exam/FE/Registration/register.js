@@ -63,15 +63,7 @@ submitButton.addEventListener('click', (event) =>{
         .catch(error => console.log(error.message));
     
     })
-    // function deleteError(){
-    //     let errorParagraphs = document.querySelectorAll('.error');
-    //     if(errorParagraphs.length > 0){
-    //         errorParagraphs.forEach(err =>{
-    //             err.innerHTML='';
-    //             form.append(err);
-    //         })
-    //     }
-    // }
+
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
     const appendAlert = (message, type) => {
       const wrapper = document.createElement('div')
