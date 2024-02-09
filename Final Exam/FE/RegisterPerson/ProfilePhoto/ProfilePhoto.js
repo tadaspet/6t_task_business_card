@@ -36,9 +36,13 @@ window.onload = () => {
                     console.log(obj);
                     if (typeof obj.errors.Image !== "undefined")
                     {
+                        if(obj.errors.Image.length >1 )
+                        {
+                            appendAlert(obj.errors.Image[0], 'danger')
+                            appendAlert(obj.errors.Image[1], 'danger')
+                        }else{
                             appendAlert(obj.errors.Image, 'danger')
-
-                        
+                        }
                     }
                     // if (obj.errors.Image.includes("The Image field is required.")) 
                     // {
