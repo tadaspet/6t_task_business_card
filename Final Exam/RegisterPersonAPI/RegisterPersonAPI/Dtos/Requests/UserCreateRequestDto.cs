@@ -15,8 +15,8 @@ namespace RegisterPersonAPI.Dtos.Requests
         /// User Email adress
         /// </summary>
         [Required]
-        [EmailAddress(ErrorMessage = "Email is not a valid email address")]
-        public string Email { get; set; } = "test@test.test";
+        [RegularExpression(@"^(?=.*[A-Za-z])[A-Za-z0-9]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", ErrorMessage = "Email is not a valid email address")]
+        public string Email { get; set; }
         /// <summary>
         /// User password
         /// </summary>
