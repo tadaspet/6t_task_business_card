@@ -64,7 +64,7 @@ namespace RegisterPersonAPI.Controllers
             if (dbSettlementInfo == null)
             {
                 _logger.LogWarning($"Settlement for {userNameIdentifier} not found.");
-                return NotFound("Not found information.");
+                return NotFound("Settlement not found.");
             }
 
             _logger.LogInformation($"Settlement successfully sent for user {userNameIdentifier}.");

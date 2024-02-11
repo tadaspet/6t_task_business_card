@@ -9,17 +9,25 @@ window.onload = () => {
     const getPersonInfoUrl = `https://localhost:7115/api/PersonInformation`;
     let userHasInfo = false;
     
+    const decodedToken = JSON.parse(atob(userToken.split(".")[1]));
+    addUserName(decodedToken);
+
     getPersonInfo(getPersonInfoUrl, userToken).then(result => {
-        if(result !== "Person Information was not found.")
+        if(result[0].status === 200)
         {
-            updateFormFields(result);
+            updateFormFields(result[1]);
             userHasInfo = true;
+            document.getElementById('editSettlementInfoLink').classList.remove('disabled');
+            document.getElementById('editPhotoLink').classList.remove('disabled');
+        } else {
+            document.getElementById('editSettlementInfoLink').classList.add('disabled');
+            document.getElementById('editPhotoLink').classList.add('disabled');
         }
     });
-    
+
     saveButton.addEventListener('click', (event) =>{
         event.preventDefault();
-        
+
         const inputBody = {
             name : inputName.value,
             surname : inputSurName.value,
@@ -41,11 +49,10 @@ window.onload = () => {
                 })
                 .then(async (response) => {
                     if (response.ok){
-                        window.location.href='../MainHome/mainHome.html';
+                        appendAlert("Success, information was updated!", 'success');
                     } else {
                         const text = await response.text ()
                         let obj = JSON.parse(text);
-                        console.log(obj);
                         if (typeof obj.errors.Name !== "undefined")
                         {
                             if(obj.errors.Name.includes("The Name field is required."))
@@ -107,11 +114,10 @@ window.onload = () => {
                     })                    
                     .then(async (response) => {
                         if (response.ok){
-                            window.location.href='../MainHome/mainHome.html';
+                            appendAlert("Success, information was added!", 'success');
                         } else {
                             const text = await response.text ()
                             let obj = JSON.parse(text);
-                            console.log(obj);
                             if (typeof obj.errors.Name !== "undefined")
                             {
                                 if(obj.errors.Name.includes("The Name field is required."))
@@ -166,7 +172,6 @@ window.onload = () => {
     
     //GET method to return values
     async function getPersonInfo(getPersonInfoUrl, userToken) {
-        
         try{
             const response = await fetch(getPersonInfoUrl, {
                 method: 'GET',
@@ -176,8 +181,8 @@ window.onload = () => {
                 },
             });
             const getData = await response.json();
-            return getData;
-
+            const responseArray = [response, getData];
+            return responseArray;
         } catch (error) {
             console.log(error);
         }
@@ -200,21 +205,74 @@ window.onload = () => {
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
     const appendAlert = (message, type) => {
       const wrapper = document.createElement('div')
-      wrapper.innerHTML = [
-        `<div class="alert alert-${type} alert-dismissible" role="alert">
-           <div>${message}</div>
-           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>`    
-      ].join()
-    
-      alertPlaceholder.append(wrapper)
-      setTimeout(() => {
-        wrapper.remove()
-    }, 5000)
+      if(type === 'danger'){
+          wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible" role="alert">
+               <div>${message}</div>
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`    
+          ].join()
+          alertPlaceholder.append(wrapper)
+          setTimeout(() => {
+            wrapper.remove()
+        }, 5000);
+      } else {
+        wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible" role="alert">
+               <div>${message}</div>
+            </div>`    
+          ].join()
+
+          alertPlaceholder.append(wrapper)
+          setTimeout(() => {
+            wrapper.remove()
+            window.location.href='../../RegisterPerson/Overview/Overview.html';   
+        }, 3500);
+      }
     };
+
+    //delete Session storage
+    const logoutLink = document.getElementById('editLogOutLink');
+    logoutLink.addEventListener('click', (event) =>{
+        event.preventDefault();
+        sessionStorage.removeItem('User');
+        window.location.href='../../Login/login.html';
+    });
+
+    //enable the delete button for user.
+    const isUserAdmin = () => {
+    const role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    return role === "Admin";
+    };
+
+    if (isUserAdmin()) {
+        const innerDropDownNav = document.getElementById('innerDropDown');
+        const deleteDivider = document.createElement('li');
+        const deleteUseroption = document.createElement('li');
+        deleteDivider.innerHTML = [
+            `<hr class="dropdown-divider">`
+        ]
+        deleteUseroption.innerHTML = [
+            `<a class="dropdown-item" href="#" id="editDeletePersonLink">Delete Person</a>`
+        ]
+        innerDropDownNav.append(deleteDivider);
+        innerDropDownNav.append(deleteUseroption);
+    } 
+    
 
     //tool tips over the input fields
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
+    function addUserName(decodedToken) {
+        const userName = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+        const homepageString = `${userName} overview`;
+
+        const homePageObject = document.getElementById('overview1');
+        const homePageObject2 = document.getElementById('overview2');
+        if (userName.length > 0){
+            homePageObject.textContent = homepageString;
+            homePageObject2.textContent = homepageString;
+        }
+    };
 }

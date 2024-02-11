@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en" data-bs-theme="dark">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Person Register</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../BootStrapCSS/bootstrap.css">
+        <link rel="icon" href="../../Images/dotnet-logo.ico" type="Images/x-icon">
+    </head>
+    <body class="bg-primary-subtle">
+        <header class="text-center">
+            <h1 class="my-5 text-primary-emphasis">Person overview</h1>
+        </header>
+        <div class="container-fluid" id="navContainer">
+            <nav class="navbar w-50 mx-auto" id="navOffCanvas">
+                  <a class="navbar-brand" href="../../RegisterPerson/Overview/Overview.html" id="overview1">Person overview</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+                    <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Person Register</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="../../RegisterPerson/Overview/Overview.html" id="overview2">Person overview</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Change Information
+                            </a>
+                            <ul class="dropdown-menu" id="innerDropDown">
+                                <li><a class="dropdown-item" href="../../RegisterPerson/PersonalInfo/PersonalInfo.html" id="editPersonalInfoLink">Personal</a></li>
+                                <li><a class="dropdown-item" href="../../RegisterPerson/Settlement/Settlement.html" id="editSettlementInfoLink">Settlement</a></li>
+                                <li><a class="dropdown-item" href="../../RegisterPerson/ProfilePhoto/ProfilePhoto.html" id="editPhotoLink">Photo</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="../../Login/login.html" id="editLogOutLink">Log Out</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              </nav>
+            <hr class="w-50 mx-auto ">
+        </div>
+        <main>
+            <div class="container-fluid w-50">
+                <h5>Photo</h5>
+                <div class="row mb-2">
+                    <div for="name" class="col-sm-4 col-form-label text-end"></div>
+                    <div class="col-sm-6">
+                        <img class="img-thumbnail rounded mx-auto d-block float-start" alt="defaultPhoto" id="personImage">
+                    </div>
+                </div>
+                <hr class="mt-5">
+            </div>
+            <form id="PersonalInformation">
+                <div class="container-fluid w-50">
+                    <h5>Personal</h5>
+                    <div class="row mb-2 mt-4">
+                        <p class="col-sm-4 text-end">Name:</p>
+                        <p class="col-sm-6" id="name">N/A</p>
+                    </div>
+                    <div class="row mb-2">
+                        <p class="col-sm-4 text-end">Surname:</p>
+                        <p class="col-sm-6" id="surname">N/A</p>
+                    </div>
+                    <div class="row mb-2">
+                        <p class="col-sm-4 text-end">Identity code:</p>
+                        <p class="col-sm-6" id="identityCode">N/A</p>
+                    </div>
+                    <div class="row mb-2">
+                        <p class="col-sm-4 text-end">Phone number:</p>
+                        <p class="col-sm-6" id="phoneNo">N/A</p>
+                    </div>
+                    <div class="row mb-2">
+                        <p class="col-sm-4 text-end">Email:</p>
+                        <p class="col-sm-6" id="email">N/A</p>
+                    </div>
+                </div>
+            </form>  
+            <div class="container-fluid w-50">
+                <hr class="mt-5">    
+                <h5>Settlement</h5>
+            </div>
+                <form class="mb-5" id="SettlementInformation">
+                    <div class="container-fluid w-50">
+                        <div class="row mb-2 mt-4">
+                            <p class="col-sm-4 text-end">City:</p>
+                            <p class="col-sm-6" id="city">N/A</p>
+                        </div>
+                        <div class="row mb-2">
+                            <p class="col-sm-4 text-end">Street:</p>
+                            <p class="col-sm-6" id="street">N/A</p>
+                        </div>
+                        <div class="row mb-2">
+                            <p class="col-sm-4 text-end">Building number:</p>
+                            <p class="col-sm-6" id="buildingNo">N/A</p>
+                        </div>
+                        <div class="row mb-2">
+                            <p class="col-sm-4 text-end">Flat number:</p>
+                            <p class="col-sm-6" id="flatNo">N/A</p>
+                        </div>
+                    </div>
+                </form>  
+            </div>
+        </main>
+        <footer>
+            <div class="text-center my-5 text-primary-emphasis">CopyRight #NETUA2_TP</div>
+        </footer>
+        
+        <script src="Overview.js" async defer></script>
+        <script src="../../BootStrapJS/bootstrap.bundle.js"></script>
+    </body>
+</html>

@@ -3,6 +3,7 @@ window.onload = () => {
     const userNameInput = document.getElementById('inputUserName');
     const userPasswordInput = document.getElementById('inputPassword');
     const submitButton = document.getElementById('login');
+    const requestURL = `https://localhost:7115/api/User/login`;        
 
     submitButton.addEventListener('click', (event) =>{
         event.preventDefault();
@@ -10,7 +11,6 @@ window.onload = () => {
             username: userNameInput.value,
             password: userPasswordInput.value
         }
-        const requestURL = `https://localhost:7115/api/User/login`;        
         fetch(requestURL,
             {
                 method: 'POST',
@@ -23,7 +23,7 @@ window.onload = () => {
             if (response.ok){
                 const data = await response.json();
                 sessionStorage.setItem('User', data);
-                window.location.href='../RegisterPerson/ProfilePhoto/ProfilePhoto.html';
+                window.location.href='../RegisterPerson/Overview/Overview.html';
             } else {
                 // deleteError();
                 const text = await response.text ()

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-bs-theme="dark">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Profile Photo</title>
+        <title>Person Register</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../../BootStrapCSS/bootstrap.css">
@@ -12,9 +12,54 @@
     </head>
     <body class="bg-primary-subtle">
         <header class="text-center">
-            <h1 class="my-5 text-primary-emphasis">Person Registration Platform</h1>
+            <h1 class="my-5 text-primary-emphasis">Change Photo</h1>
         </header>
+        <div class="container-fluid" id="navContainer">
+            <nav class="navbar w-50 mx-auto" id="navOffCanvas">
+                  <a class="navbar-brand" href="../../RegisterPerson/Overview/Overview.html" id="overview1">Person overview</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+                    <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Person Register</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="../../RegisterPerson/Overview/Overview.html" id="overview2">Person overview</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Change Information
+                            </a>
+                            <ul class="dropdown-menu" id="innerDropDown">
+                                <li><a class="dropdown-item" href="../../RegisterPerson/PersonalInfo/PersonalInfo.html" id="editPersonalInfoLink">Personal</a></li>
+                                <li><a class="dropdown-item" href="../../RegisterPerson/Settlement/Settlement.html" id="editSettlementInfoLink">Settlement</a></li>
+                                <li><a class="active dropdown-item" href="../../RegisterPerson/ProfilePhoto/ProfilePhoto.html" id="editPhotoLink">Photo</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="../../Login/login.html" id="editLogOutLink">Log Out</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              </nav>
+            <hr class="w-50 mx-auto ">
+        </div>
         <main>
+          <div class="container-fluid w-50">
+            <h5>Current Photo</h5>
+            <div class="row mb-2">
+                <div for="name" class="col-sm-4 col-form-label text-end"></div>
+                <div class="col-sm-6">
+                    <img class="img-thumbnail rounded mx-auto d-block float-start" alt="defaultPhoto" id="personImage">
+                </div>
+            </div>
+            <hr class="mt-5">
+          </div>
             <div class="container-fluid text-center">
                 <div class="row justify-content-center">
                   <div class="col-4 w-50">
@@ -24,7 +69,7 @@
                 </div>
             </div>
             <form class="needs-validation novalidate" id="PersonalPhoto">
-                <div class="container-fluid w-50 border rounded-5 border-primary-subtle p-4">
+                <div class="container-fluid w-50 p-4">
                     <div class="form-group row mb-2">
                         <label for="PhotoFile" class="col-sm-4 col-form-label text-end"
                         data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="File size is maximum 5 MB, and possible extensions jpg/png." required>
@@ -40,7 +85,6 @@
             </form>
         </main>
         <footer>
-            <h3 class="text-center my-5 text-primary-emphasis">NETUA2 FINAL EXAM</h3>
             <div class="text-center my-5 text-primary-emphasis">CopyRight #NETUA2_TP</div>
         </footer>
         
