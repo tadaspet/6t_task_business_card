@@ -123,7 +123,7 @@ window.onload = () => {
         window.location.href='../../Login/login.html';
     });
 
-    //enable the delete button for user.
+    //enable the delete navigation for user.
     const isUserAdmin = () => {
     const role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
     return role === "Admin";
@@ -137,7 +137,7 @@ window.onload = () => {
             `<hr class="dropdown-divider">`
         ]
         deleteUseroption.innerHTML = [
-            `<a class="dropdown-item" href="#" id="editDeletePersonLink">Delete Person</a>`
+            `<a class="dropdown-item" href="../../RegisterPerson/DeleteUser/DeleteUser.html" id="editDeletePersonLink">Delete Person</a>`
         ]
         innerDropDownNav.append(deleteDivider);
         innerDropDownNav.append(deleteUseroption);

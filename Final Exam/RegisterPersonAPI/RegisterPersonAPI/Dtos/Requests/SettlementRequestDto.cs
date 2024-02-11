@@ -5,7 +5,7 @@ namespace RegisterPersonAPI.Dtos.Requests
     public class SettlementRequestDto
     {
         [Required]
-        [RegularExpression("^[a-zA-Z]{2,40}$", ErrorMessage = "City must be between 2 an 40 characters long, nd consist only from letters.")]
+        [RegularExpression("^[a-zA-Z]{2,40}$", ErrorMessage = "City must be between 2 an 40 characters long, and consist only from letters.")]
         public string City { get; set; }
         [Required]
         [StringLength(40, MinimumLength = 2, ErrorMessage = "Street can't be longer than 40 characters and shorter than 2 characters.")]
