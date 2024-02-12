@@ -2,7 +2,6 @@
 using RegisterPersonApi.DAL.Entities;
 using RegisterPersonApi.DAL.Repositories.Interfaces;
 using System.Drawing;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace RegisterPersonApi.BLL.Services
 {
@@ -51,12 +50,12 @@ namespace RegisterPersonApi.BLL.Services
         public bool DeleteImageFile(Guid userId)
         {
             var image = _repository.GetImageFile(userId);
-            if(image == null)
+            if (image == null)
             {
                 return false;
             }
             var isDeleted = _repository.DeleteImageFile(image.Id);
-            if(!isDeleted)
+            if (!isDeleted)
             {
                 return false;
             }

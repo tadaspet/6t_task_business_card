@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RegisterPersonAPI.Dtos.Requests
+namespace RegisterPersonAPI.DTOs.Requests
 {
-    public class UserCreateRequestDto
+    public class UserCreateRequestDTO
     {
         /// <summary>
         /// User name 
@@ -12,10 +12,10 @@ namespace RegisterPersonAPI.Dtos.Requests
             "contain only letters and numbers, and be between 6 and 20 characters.")]
         public string UserName { get; set; }
         /// <summary>
-        /// User Email adress
+        /// User Email address
         /// </summary>
         [Required]
-        [RegularExpression(@"^(?=.*[A-Za-z])[A-Za-z0-9]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", ErrorMessage = "Email is not a valid email address")]
+        [RegularExpression(@"^(?=.*[A-Za-z])[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]{2,}$", ErrorMessage = "Email is not a valid email address")]
         public string Email { get; set; }
         /// <summary>
         /// User password

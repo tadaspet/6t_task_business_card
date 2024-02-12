@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RegisterPersonAPI.Dtos.Requests
+namespace RegisterPersonAPI.DTOs.Requests
 {
-    public class PersonInfoRequestDto
+    public class PersonInfoRequestDTO
     {
         [Required]
         [RegularExpression(@"^[a-zA-Z\s]{1,30}$", ErrorMessage = "Name must be between 1-30 characters long and contain only letters.")]
@@ -11,7 +11,7 @@ namespace RegisterPersonAPI.Dtos.Requests
         [RegularExpression(@"^[a-zA-Z\s]{1,50}$", ErrorMessage = "Surname must be between 1-50 characters long and contain only letters.")]
         public string Surname { get; set; }
         [Required]
-        [StringLength(20, MinimumLength = 10, ErrorMessage = "IdentityCode can't be longer than 20 characters and shorter than 10 characters.")]
+        [StringLength(20, MinimumLength = 10, ErrorMessage = "Identity code can't be longer than 20 characters and shorter than 10 characters.")]
         public string IdentityCode { get; set; }
         [Required]
         [Phone(ErrorMessage = "Phone number can include digits, spaces, parentheses, hyphens, periods and plus sign.")]

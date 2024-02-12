@@ -3,12 +3,11 @@ window.onload = () => {
     const getPersonSettlementUrl = `https://localhost:7115/api/Settlement`;
     let userHasInfo = false;
     const saveButton = document.getElementById('saveButtonSttlement');
-    const flatNo = "N/A";
+    let flatNo = "";
     
     const decodedToken = JSON.parse(atob(userToken.split(".")[1]));
     addUserName(decodedToken);
 
-    
     getSettlement(getPersonSettlementUrl, userToken).then(result => {
         if(result[0].status === 200)
         {
@@ -17,13 +16,12 @@ window.onload = () => {
         }
     });
 
-
     saveButton.addEventListener('click', (event) =>{
         event.preventDefault();
         if(document.getElementById('flatNo').value.length < 1){
-            const flatNo = "N/A";
+            flatNo = "N/A";
         } else {
-            const flatNo = document.getElementById('flatNo').value;
+            flatNo = document.getElementById('flatNo').value;
         }
         const inputBody = {
             city : document.getElementById('city').value,
@@ -160,7 +158,7 @@ window.onload = () => {
         for (var i = 0; i < settlemenInfoProp.length; i++) {
             var id = settlemenInfoProp[i];
             var inputElement = document.getElementById(id);
-            if (inputElement && settlementInfo[id].length > 0) {
+            if (inputElement && settlementInfo[id] !== "N/A") {
                 inputElement.value = settlementInfo[id];
             } else if (inputElement) {
                 inputElement.value = 'N/A';
@@ -226,6 +224,12 @@ window.onload = () => {
         innerDropDownNav.append(deleteUseroption);
     } 
 
+
+    //tool tips over the input fields
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    //add userName to the navigaiton bar
     function addUserName(decodedToken) {
         const userName = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
         const homepageString = `${userName} overview`;

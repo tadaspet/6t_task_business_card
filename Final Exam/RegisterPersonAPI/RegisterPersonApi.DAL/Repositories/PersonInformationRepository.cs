@@ -31,7 +31,7 @@ namespace RegisterPersonApi.DAL.Repositories
             _context.SaveChanges();
             return personInfo.Id;
         }
-        public bool UpdatePersonInformaiton(PersonInformation personInformation)
+        public bool UpdatePersonInformation(PersonInformation personInformation)
         {
             var dbPersonInfo = _context.PersonInformations
                 .FirstOrDefault(p => p.UserId == personInformation.UserId);

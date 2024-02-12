@@ -6,6 +6,6 @@ namespace RegisterPersonApi.BLL.Services.Interfaces
     {
         int AddNewPersonInformation(PersonInformation personInfo);
         PersonInformation GetPersonalInformation(Guid personId);
-        bool UpdatePersonInformaiton(PersonInformation personInfo);
+        bool UpdatePersonInformation(PersonInformation personInfo);
     }
 }

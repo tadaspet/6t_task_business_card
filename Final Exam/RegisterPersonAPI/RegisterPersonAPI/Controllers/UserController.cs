@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RegisterPersonApi.BLL.Services.Interfaces;
 using RegisterPersonApi.DAL.Repositories.Interfaces;
-using RegisterPersonAPI.Dtos.Requests;
+using RegisterPersonAPI.DTOs.Requests;
 using RegisterPersonAPI.Mappers.Interfaces;
 using System.Net.Mime;
 using System.Security.Claims;
@@ -30,7 +30,7 @@ namespace RegisterPersonAPI.Controllers
         }
 
         /// <summary>
-        /// Login User to the system
+        /// UserExists User to the system
         /// </summary>
         /// <param name="userLogin"></param>
         /// <returns>token value</returns>
@@ -45,7 +45,7 @@ namespace RegisterPersonAPI.Controllers
         public IActionResult Login(UserLoginRequestDTO userLogin)
         {
             _logger.LogInformation($"Login attempt for {userLogin.UserName}");
-            var user = _usersService.Login(userLogin.UserName, userLogin.Password);
+            var user = _usersService.UserExists(userLogin.UserName);
             if (user == null)
             {
                 _logger.LogWarning($"User {userLogin.UserName} not found");
@@ -77,14 +77,14 @@ namespace RegisterPersonAPI.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
-        public IActionResult SignUp(UserCreateRequestDto createUser)
+        public IActionResult SignUp(UserCreateRequestDTO createUser)
         {
             _logger.LogInformation($"Creating account for {createUser.UserName}");
 
             var userNameExists = _usersRepository.GetUserByUsername(createUser.UserName);
             if (userNameExists != null)
             {
-                _logger.LogWarning($"User with the username {createUser.Email} already exists");
+                _logger.LogWarning($"User with the Username {createUser.Email} already exists");
                 return Conflict("Username is already taken.");
             }
 
@@ -96,7 +96,7 @@ namespace RegisterPersonAPI.Controllers
             }
 
             var user = _userMapper.Map(createUser);
-            var userId = _usersService.Signup(user);
+            var userId = _usersService.UserSignUp(user);
 
             if (userId == Guid.Empty)
             {
@@ -109,7 +109,7 @@ namespace RegisterPersonAPI.Controllers
         }
 
         /// <summary>
-        /// Remove user, admin access
+        /// Remove user, Administrator access
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -129,7 +129,7 @@ namespace RegisterPersonAPI.Controllers
             var userNameIdentifier = User.FindFirstValue(ClaimTypes.NameIdentifier);
             _logger.LogWarning($"Delete attempt for user {id}");
             var checkGuid = Guid.TryParse(userNameIdentifier, out var userGuid);
-            if(!checkGuid)
+            if (!checkGuid)
             {
                 _logger.LogWarning($"Forbidden attempt to delete for {userNameIdentifier}");
                 return Forbid("Forbidden access.");

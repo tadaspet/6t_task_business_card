@@ -8,9 +8,9 @@ namespace RegisterPersonApi.BLL.Services
     {
         private readonly ISettlementRepository _settlRepo;
 
-        public SettlementService(ISettlementRepository settlRepo)
+        public SettlementService(ISettlementRepository settlementRepository)
         {
-            _settlRepo = settlRepo;
+            _settlRepo = settlementRepository;
         }
 
         public Settlement GetSettlement(Guid userId)
@@ -18,7 +18,7 @@ namespace RegisterPersonApi.BLL.Services
             return _settlRepo.GetSettlement(userId);
         }
 
-        public int AddNewSetllement(Settlement settlement, Guid userId)
+        public int AddNewSettlement(Settlement settlement, Guid userId)
         {
             var hasDbSettlement = _settlRepo.GetSettlement(userId);
             if (hasDbSettlement != null)
@@ -27,7 +27,7 @@ namespace RegisterPersonApi.BLL.Services
             }
             settlement.CreationDate = DateTime.Now;
 
-            return _settlRepo.AddNewSetllement(settlement);
+            return _settlRepo.AddNewSettlement(settlement);
         }
 
         public bool UpdateSettlement(Settlement settlement, Guid userId)

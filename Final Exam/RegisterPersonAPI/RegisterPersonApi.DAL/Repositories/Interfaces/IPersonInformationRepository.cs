@@ -6,6 +6,6 @@ namespace RegisterPersonApi.DAL.Repositories.Interfaces
     {
         PersonInformation GetPersonalInformation(Guid userId);
         int AddNewPersonInformation(PersonInformation personInfo);
-        bool UpdatePersonInformaiton(PersonInformation personInformation);
+        bool UpdatePersonInformation(PersonInformation personInformation);
     }
 }

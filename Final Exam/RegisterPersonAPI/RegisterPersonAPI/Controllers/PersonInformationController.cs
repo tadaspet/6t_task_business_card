@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using RegisterPersonApi.BLL.Services;
 using RegisterPersonApi.BLL.Services.Interfaces;
 using RegisterPersonApi.DAL.Repositories.Interfaces;
-using RegisterPersonAPI.Dtos.Requests;
-using RegisterPersonAPI.Dtos.Results;
+using RegisterPersonAPI.DTOs.Requests;
+using RegisterPersonAPI.DTOs.Results;
 using RegisterPersonAPI.Mappers.Interfaces;
 using System.Net.Mime;
 using System.Security.Claims;
@@ -42,8 +42,8 @@ namespace RegisterPersonAPI.Controllers
         /// </summary>
         /// <returns></returns>
         /// <response code="200">Person Information sent</response>
-        /// <response code="401">Unauthorised access</response>
-        /// <response code="403">Forbidden atempt</response>
+        /// <response code="401">Unauthorized access</response>
+        /// <response code="403">Forbidden attempt</response>
         /// <response code="404">Person Information not found</response>
         /// <response code="500">Server error</response>
         [HttpGet]
@@ -84,8 +84,8 @@ namespace RegisterPersonAPI.Controllers
         /// <returns></returns>
         /// <response code="201">Person Information created</response>
         /// <response code="400">Person Information was created before</response>
-        /// <response code="401">Unauthorised access</response>
-        /// <response code="403">Forbidden atempt</response>
+        /// <response code="401">Unauthorized access</response>
+        /// <response code="403">Forbidden attempt</response>
         /// <response code="500">Server error</response>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
@@ -94,7 +94,7 @@ namespace RegisterPersonAPI.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult PostNewPersonInformation(PersonInfoRequestDto postDto)
+        public IActionResult PostNewPersonInformation(PersonInfoRequestDTO postDto)
         {
             var userNameIdentifier = User.FindFirstValue(ClaimTypes.NameIdentifier);
             _logger.LogInformation($"Post Person Information attempt for {userNameIdentifier}.");
@@ -126,8 +126,8 @@ namespace RegisterPersonAPI.Controllers
         /// <param name="postDto"></param>
         /// <returns></returns>
         /// <response code="204">Person Information updated</response>
-        /// <response code="401">Unauthorised access</response>
-        /// <response code="403">Forbidden atempt</response>
+        /// <response code="401">Unauthorized access</response>
+        /// <response code="403">Forbidden attempt</response>
         /// <response code="404">Person Information was not found</response>
         /// <response code="500">Server error</response>
         [HttpPut]
@@ -137,7 +137,7 @@ namespace RegisterPersonAPI.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult UpdatePersonInformation(PersonInfoRequestDto postDto)
+        public IActionResult UpdatePersonInformation(PersonInfoRequestDTO postDto)
         {
             var userNameIdentifier = User.FindFirstValue(ClaimTypes.NameIdentifier);
             _logger.LogInformation($"Put Person Information attempt for {userNameIdentifier}.");
@@ -151,7 +151,7 @@ namespace RegisterPersonAPI.Controllers
             }
 
             var entity = _mapper.Map(postDto, userGuid);
-            var dbPersonInfo = _personService.UpdatePersonInformaiton(entity);
+            var dbPersonInfo = _personService.UpdatePersonInformation(entity);
 
             if (dbPersonInfo == false)
             {
@@ -170,19 +170,19 @@ namespace RegisterPersonAPI.Controllers
         /// <returns></returns>
         /// <response code="201">Image File uploaded</response>
         /// <response code="400">Image File could not be saved</response>
-        /// <response code="401">Unauthorised access</response>
-        /// <response code="403">Forbidden atempt</response>
-        /// <response code="404">Neccessary Person Information was not found</response>
+        /// <response code="401">Unauthorized access</response>
+        /// <response code="403">Forbidden attempt</response>
+        /// <response code="404">Necessary Person Information was not found</response>
         /// <response code="500">Server error</response>
         [HttpPost("UploadImage")]
         [Produces(MediaTypeNames.Application.Json)]
         [Consumes("multipart/form-data")]
-        [ProducesResponseType(typeof(ImageFileRequestDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ImageFileRequestDTO), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult UploadNewImageFile(ImageFileRequestDto postDto)
+        public IActionResult UploadNewImageFile(ImageFileRequestDTO postDto)
         {
             var userNameIdentifier = User.FindFirstValue(ClaimTypes.NameIdentifier);
             _logger.LogInformation($"Post Image File attempt for {userNameIdentifier}.");
@@ -221,8 +221,8 @@ namespace RegisterPersonAPI.Controllers
         /// </summary>
         /// <returns></returns>
         /// <response code="200">Image File sent</response>
-        /// <response code="401">Unauthorised access</response>
-        /// <response code="403">Forbidden atempt</response>
+        /// <response code="401">Unauthorized access</response>
+        /// <response code="403">Forbidden attempt</response>
         /// <response code="404">Image File not found</response>
         /// <response code="500">Server error</response>
         [HttpGet("DownloadImage")]
@@ -240,8 +240,8 @@ namespace RegisterPersonAPI.Controllers
 
             if (!checkGuid)
             {
-                _logger.LogWarning($"Unauthorised attempt to GET Image File {userNameIdentifier}.");
-                return Forbid("Unauthorised access.");
+                _logger.LogWarning($"Unauthorized attempt to GET Image File {userNameIdentifier}.");
+                return Forbid("Unauthorized access.");
             }
 
             var imageFile = _imageFileService.GetImageFile(userGuid);

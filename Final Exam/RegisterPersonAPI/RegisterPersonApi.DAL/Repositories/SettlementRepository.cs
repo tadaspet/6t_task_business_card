@@ -26,7 +26,7 @@ namespace RegisterPersonApi.DAL.Repositories
             }
             return settlementInfo;
         }
-        public int AddNewSetllement(Settlement settlement)
+        public int AddNewSettlement(Settlement settlement)
         {
             _context.Settlements.Add(settlement);
             _context.SaveChanges();

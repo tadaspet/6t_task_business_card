@@ -13,7 +13,7 @@ namespace RegisterPersonApi.BLL.Services
         {
             _usersRepository = usersRepository;
         }
-        public User Login(string username, string password)
+        public User UserExists(string username)
         {
             var user = _usersRepository.GetUser(username);
             if (user is null)
@@ -23,7 +23,7 @@ namespace RegisterPersonApi.BLL.Services
             return user;
         }
 
-        public Guid Signup(User requestUser)
+        public Guid UserSignUp(User requestUser)
         {
             var user = _usersRepository.GetUser(requestUser.Username);
             if (user != null)

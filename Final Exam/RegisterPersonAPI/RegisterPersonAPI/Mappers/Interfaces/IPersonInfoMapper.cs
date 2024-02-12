@@ -1,12 +1,12 @@
 ﻿using RegisterPersonApi.DAL.Entities;
-using RegisterPersonAPI.Dtos.Requests;
-using RegisterPersonAPI.Dtos.Results;
+using RegisterPersonAPI.DTOs.Requests;
+using RegisterPersonAPI.DTOs.Results;
 
 namespace RegisterPersonAPI.Mappers.Interfaces
 {
     public interface IPersonInfoMapper
     {
-        PersonInformation Map(PersonInfoRequestDto dto, Guid userId);
+        PersonInformation Map(PersonInfoRequestDTO dto, Guid userId);
         PersonInfoResultDto Map(PersonInformation entity);
     }
 }

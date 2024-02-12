@@ -1,4 +1,4 @@
-﻿namespace RegisterPersonAPI.Dtos.Results
+﻿namespace RegisterPersonAPI.DTOs.Results
 {
     public class ImageFileResultDto
     {

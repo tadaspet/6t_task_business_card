@@ -61,40 +61,41 @@
             <form class="needs-validation novalidate" id="PersonalInformation">
                 <div class="container-fluid w-50 p-4">
                     <div class="form-group row mb-2">
-                        <label for="name" class="col-sm-4 col-form-label text-end">Name:</label>
+                        <label for="name" class="col-sm-4 col-form-label text-end">Name*:</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="name" placeholder="Name" 
                             data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Name must be between 1-30 characters long and contain only letters." required>
                         </div>
                     </div>
                     <div class="form-group row mb-2">
-                        <label for="surname" class="col-sm-4 col-form-label text-end">Surname:</label>
+                        <label for="surname" class="col-sm-4 col-form-label text-end">Surname*:</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="surname" placeholder="Surname"
                             data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Surname must be between 1-50 characters long and contain only letters." required>
                         </div>
                     </div>
                     <div class="form-group row mb-2">
-                        <label for="identityCode" class="col-sm-4 col-form-label text-end">Identity code:</label>
+                        <label for="identityCode" class="col-sm-4 col-form-label text-end">Identity code*:</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="identityCode" placeholder="0000000000"
-                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="IdentityCode can't be longer than 20 characters and shorter than 10 characters." required>
+                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Identity code can't be longer than 20 characters and shorter than 10 characters." required>
                         </div>
                     </div>
                     <div class="form-group row mb-2">
-                        <label for="phoneNo" class="col-sm-4 col-form-label text-end">Phone number:</label>
+                        <label for="phoneNo" class="col-sm-4 col-form-label text-end">Phone number*:</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="phoneNo" placeholder="+37060000000"
                             data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Phone number can include digits, spaces, parentheses, hyphens, periods and plus sign."required>
                         </div>
                     </div>
                     <div class="form-group row mb-2">
-                        <label for="email" class="col-sm-4 col-form-label text-end">Email:</label>
+                        <label for="email" class="col-sm-4 col-form-label text-end">Email*:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="email" placeholder="Example@example.com" required>
+                            <input type="text" class="form-control" id="email" placeholder="Example@example.com" 
+                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Email should contain at least one letter, the domain name can include alphanumeric characters, and domain extension must have at least two letters."required>
                         </div>
                     </div>
-                    <div class="text-center mt-4">* All fields are required.</div>
+                    <div class="text-center mt-4">* Fields are required.</div>
                     <div class="text-center mt-4">
                         <button type="button" class="btn btn-primary btn-md" id="saveButtonPersonInfo">Save</button>
                     </div>
@@ -102,7 +103,10 @@
             </form>            
         </main>
         <footer>
-            <div class="text-center my-5 text-primary-emphasis">CopyRight #NETUA2_TP</div>
+            <div class="container-fluid">
+                <hr class="w-50 mx-auto ">
+                <div class="text-center my-3 text-primary-emphasis">CopyRight #NETUA2_TP</div>
+            </div>
         </footer>
         <script src="PersonalInfo.js" async defer></script>
         <script src="../../BootStrapJS/bootstrap.bundle.js"></script>

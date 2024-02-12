@@ -136,6 +136,11 @@ window.onload = () => {
         innerDropDownNav.append(deleteUseroption);
     };
 
+    //tool tips over the input fields
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    //add userName to the navigaiton bar
     function addUserName(decodedToken) {
         const userName = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
         const homepageString = `${userName} overview`;

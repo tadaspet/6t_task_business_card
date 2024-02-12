@@ -1,10 +1,10 @@
 ﻿using RegisterPersonApi.DAL.Entities;
-using RegisterPersonAPI.Dtos.Requests;
+using RegisterPersonAPI.DTOs.Requests;
 
 namespace RegisterPersonAPI.Mappers.Interfaces
 {
     public interface IUserMapper
     {
-        User Map(UserCreateRequestDto dto);
+        User Map(UserCreateRequestDTO dto);
     }
 }

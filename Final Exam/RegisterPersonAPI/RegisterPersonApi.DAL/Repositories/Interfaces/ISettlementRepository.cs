@@ -4,7 +4,7 @@ namespace RegisterPersonApi.DAL.Repositories.Interfaces
 {
     public interface ISettlementRepository
     {
-        int AddNewSetllement(Settlement settlement);
+        int AddNewSettlement(Settlement settlement);
         Settlement GetSettlement(Guid userId);
         bool UpdateSettlement(Settlement settlement);
     }

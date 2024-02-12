@@ -1,9 +1,7 @@
-﻿using Azure.Core;
-using RegisterPersonApi.BLL.Services.Interfaces;
+﻿using RegisterPersonApi.BLL.Services.Interfaces;
 using RegisterPersonApi.DAL.Entities;
-using RegisterPersonAPI.Dtos.Requests;
+using RegisterPersonAPI.DTOs.Requests;
 using RegisterPersonAPI.Mappers.Interfaces;
-using System.Drawing;
 
 namespace RegisterPersonAPI.Mappers
 {
@@ -16,7 +14,7 @@ namespace RegisterPersonAPI.Mappers
             _imageFileService = imageFileService;
         }
 
-        public ImageFile Map(ImageFileRequestDto dto, int personInfoId)
+        public ImageFile Map(ImageFileRequestDTO dto, int personInfoId)
         {
             using var memoryStream = new MemoryStream();
             dto.Image.CopyTo(memoryStream);

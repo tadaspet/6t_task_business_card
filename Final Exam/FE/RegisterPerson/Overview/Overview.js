@@ -69,7 +69,7 @@ window.onload = () => {
             const responseArray = [response, getImage];
             return responseArray;
         } catch (error) {
-            console.log(error);
+                console.log(error);
         }
     };
 
@@ -87,7 +87,7 @@ window.onload = () => {
             const responseArray = [response, getData];
             return responseArray;
         } catch (error) {
-            console.log(error);
+                console.log(error);
         }
     };
 

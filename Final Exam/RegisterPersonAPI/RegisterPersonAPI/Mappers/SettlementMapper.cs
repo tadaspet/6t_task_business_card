@@ -1,6 +1,6 @@
 ﻿using RegisterPersonApi.DAL.Entities;
-using RegisterPersonAPI.Dtos.Requests;
-using RegisterPersonAPI.Dtos.Results;
+using RegisterPersonAPI.DTOs.Requests;
+using RegisterPersonAPI.DTOs.Results;
 using RegisterPersonAPI.Mappers.Interfaces;
 
 namespace RegisterPersonAPI.Mappers

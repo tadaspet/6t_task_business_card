@@ -1,6 +1,6 @@
 ﻿using RegisterPersonApi.BLL.Services.Interfaces;
 using RegisterPersonApi.DAL.Entities;
-using RegisterPersonAPI.Dtos.Requests;
+using RegisterPersonAPI.DTOs.Requests;
 using RegisterPersonAPI.Mappers.Interfaces;
 
 namespace RegisterPersonAPI.Mappers
@@ -14,7 +14,7 @@ namespace RegisterPersonAPI.Mappers
             _usersService = usersService;
         }
 
-        public User Map(UserCreateRequestDto dto)
+        public User Map(UserCreateRequestDTO dto)
         {
             _usersService.CreatePasswordHash(dto.Password, out var passwordHash, out var passwordSalt);
             var model = new User

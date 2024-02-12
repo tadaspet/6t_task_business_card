@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RegisterPersonApi.BLL.Services.Interfaces;
-using RegisterPersonAPI.Dtos.Requests;
-using RegisterPersonAPI.Dtos.Results;
+using RegisterPersonAPI.DTOs.Requests;
+using RegisterPersonAPI.DTOs.Results;
 using RegisterPersonAPI.Mappers.Interfaces;
 using System.Net.Mime;
 using System.Security.Claims;
@@ -24,12 +24,12 @@ namespace RegisterPersonAPI.Controllers
         public SettlementController(
             ILogger<SettlementController> logger, 
             ISettlementMapper mapper, 
-            ISettlementService settlService, 
+            ISettlementService settlementService, 
             IPersonInformaitonService personInfoService)
         {
             _logger = logger;
             _mapper = mapper;
-            _settlService = settlService;
+            _settlService = settlementService;
             _personInfoService = personInfoService;
         }
 
@@ -38,8 +38,8 @@ namespace RegisterPersonAPI.Controllers
         /// </summary>
         /// <returns></returns>
         /// <response code="200">Settlement was sent</response>
-        /// <response code="401">Unauthorised access</response>
-        /// <response code="403">Forbidden atempt</response>
+        /// <response code="401">Unauthorized access</response>
+        /// <response code="403">Forbidden attempt</response>
         /// <response code="404">Settlement not found</response>
         /// <response code="500">Server error</response>
         [HttpGet]
@@ -78,9 +78,9 @@ namespace RegisterPersonAPI.Controllers
         /// <returns></returns>
         /// <response code="201">Settlement created</response>
         /// <response code="400">Settlement was created before</response>
-        /// <response code="401">Unauthorised access</response>
-        /// <response code="403">Forbidden atempt</response>
-        /// <response code="404">Neccessary Person Informtion was not found</response>
+        /// <response code="401">Unauthorized access</response>
+        /// <response code="403">Forbidden attempt</response>
+        /// <response code="404">Necessary Person Information was not found</response>
         /// <response code="500">Server error</response>
         [HttpPost]
         [Produces(MediaTypeNames.Application.Json)]
@@ -111,7 +111,7 @@ namespace RegisterPersonAPI.Controllers
             }
 
             var entity = _mapper.Map(postDto, dbPersonInfo.Id);
-            var dbSettlementInfo = _settlService.AddNewSetllement(entity, userGuid);
+            var dbSettlementInfo = _settlService.AddNewSettlement(entity, userGuid);
 
             if (dbSettlementInfo == 0)
             {
@@ -129,9 +129,9 @@ namespace RegisterPersonAPI.Controllers
         /// <param name="postDto"></param>
         /// <returns></returns>
         /// <response code="204">Settlement updated</response>
-        /// <response code="401">Unauthorised access</response>
-        /// <response code="403">Forbidden atempt</response>
-        /// <response code="404">Neccessary Person Informtion was not found</response>
+        /// <response code="401">Unauthorized access</response>
+        /// <response code="403">Forbidden attempt</response>
+        /// <response code="404">Necessary Person Information was not found</response>
         /// <response code="500">Server error</response>
         [HttpPut]
         [Produces(MediaTypeNames.Application.Json)]
@@ -156,8 +156,8 @@ namespace RegisterPersonAPI.Controllers
 
             if(dbPersonInfo == null)
             {
-                _logger.LogWarning($"Person Informtion for {userNameIdentifier} is not found.");
-                return NotFound("Person Informtion was not found.");
+                _logger.LogWarning($"Person Information for {userNameIdentifier} is not found.");
+                return NotFound("Person Information was not found.");
             }
 
             var entity = _mapper.Map(postDto, dbPersonInfo.Id);

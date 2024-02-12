@@ -22,7 +22,7 @@ namespace RegisterPersonAPI
             builder.Services.AddDbContext<RegisterDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ExamDataBase"))
             );
-            builder.Services.AddBussinessLayer();
+            builder.Services.AddBusinessLayer();
             builder.Services.AddDataLayer();
             builder.Services.AddTransient<IUserMapper, UserMapper>();
             builder.Services.AddTransient<IPersonInfoMapper, PersonInfoMapper>();
@@ -36,9 +36,9 @@ namespace RegisterPersonAPI
             {
                 opt.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Version = "v0.0001",
+                    Version = "v1.0",
                     Title = "Person Registration API",
-                    Description = "Person Registration ASP.NET Core Web API.\n <<-THE FINAL EXAM->>.",
+                    Description = "Person Registration ASP.NET Core Web API. <<-THE FINAL EXAM->>.",
                 });
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
