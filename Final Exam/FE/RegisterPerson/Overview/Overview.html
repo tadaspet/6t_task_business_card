@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../../BootStrapCSS/bootstrap.css">
-        <link rel="icon" href="../../Images/dotnet-logo.ico" type="Images/x-icon">
+        <link rel="icon" href="../../Images/favicon.ico" type="Images/x-icon">
         <style>
             body {
                 background-image: url('../../Images/background.png');
@@ -19,12 +19,12 @@
     </head>
     <body class="bg-primary-subtle">
         <header class="text-center">
-            <h1 class="my-5 text-dark">Person overview</h1>
+            <h1 class="my-5">Person Overview</h1>
         </header>
         <div class="container-fluid" id="navContainer">
             <nav class="navbar w-50 mx-auto" id="navOffCanvas">
-                  <a class="navbar-brand text-dark" href="../../RegisterPerson/Overview/Overview.html" id="overview1">Person overview</a>
-                  <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                  <a class="navbar-brand" href="../../RegisterPerson/Overview/Overview.html" id="overview1">Person overview</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
@@ -58,61 +58,59 @@
         </div>
         <main>
             <div class="container-fluid w-50">
-                <h5 class="text-dark">Photo</h5>
+                <h5 class="bs-secondary-color">Photo</h5>
                 <div class="row mb-2">
                     <div for="name" class="col-sm-4 col-form-label text-end"></div>
                     <div class="col-sm-6">
-                        <img class="img-thumbnail rounded mx-auto d-block float-start" alt="defaultPhoto" id="personImage">
+                        <img class="img-thumbnail border-light-subtle rounded mx-auto d-block float-start" alt="defaultPhoto" id="personImage">
                     </div>
                 </div>
-                <hr class="mt-5">
             </div>
             <form id="PersonalInformation">
                 <div class="container-fluid w-50">
-                    <h5 class="text-dark">Personal</h5>
+                    <h5 class="bs-emphasis-color">Personal</h5>
                     <div class="row mt-4">
-                        <p class="col-sm-4 text-end text-dark">Name:</p>
-                        <p class="col-sm-6 text-dark" id="name">N/A</p>
+                        <p class="col-sm-4 text-end">Name:</p>
+                        <p class="col-sm-6" id="name">N/A</p>
                     </div>
                     <div class="row">
-                        <p class="col-sm-4 text-end text-dark">Surname:</p>
-                        <p class="col-sm-6 text-dark" id="surname">N/A</p>
+                        <p class="col-sm-4 text-end">Surname:</p>
+                        <p class="col-sm-6" id="surname">N/A</p>
                     </div>
                     <div class="row">
-                        <p class="col-sm-4 text-end text-dark">Identity code:</p>
-                        <p class="col-sm-6 text-dark" id="identityCode">N/A</p>
+                        <p class="col-sm-4 text-end">Identity code:</p>
+                        <p class="col-sm-6" id="identityCode">N/A</p>
                     </div>
                     <div class="row">
-                        <p class="col-sm-4 text-end text-dark">Phone number:</p>
-                        <p class="col-sm-6 text-dark" id="phoneNo">N/A</p>
+                        <p class="col-sm-4 text-end">Phone number:</p>
+                        <p class="col-sm-6" id="phoneNo">N/A</p>
                     </div>
                     <div class="row">
-                        <p class="col-sm-4 text-end text-dark">Email:</p>
-                        <p class="col-sm-6 text-dark" id="email">N/A</p>
+                        <p class="col-sm-4 text-end">Email:</p>
+                        <p class="col-sm-6" id="email">N/A</p>
                     </div>
                 </div>
             </form>  
             <div class="container-fluid w-50">
-                <hr class="mt-5 bg-dark">    
-                <h5 class="text-dark">Settlement</h5>
+                <h5 class="">Settlement</h5>
             </div>
-                <form class="mb-5" id="SettlementInformation">
+                <form class="mx-auto" id="SettlementInformation">
                     <div class="container-fluid w-50">
                         <div class="row mt-4">
-                            <p class="col-sm-4 text-end text-dark">City:</p>
-                            <p class="col-sm-6 text-dark" id="city">N/A</p>
+                            <p class="col-sm-4 text-end">City:</p>
+                            <p class="col-sm-6" id="city">N/A</p>
                         </div>
                         <div class="row">
-                            <p class="col-sm-4 text-end text-dark">Street:</p>
-                            <p class="col-sm-6 text-dark" id="street">N/A</p>
+                            <p class="col-sm-4 text-end">Street:</p>
+                            <p class="col-sm-6" id="street">N/A</p>
                         </div>
                         <div class="row">
-                            <p class="col-sm-4 text-end text-dark">Building number:</p>
-                            <p class="col-sm-6 text-dark" id="buildingNo">N/A</p>
+                            <p class="col-sm-4 text-end">Building number:</p>
+                            <p class="col-sm-6" id="buildingNo">N/A</p>
                         </div>
                         <div class="row">
-                            <p class="col-sm-4 text-end text-dark">Flat number:</p>
-                            <p class="col-sm-6 text-dark" id="flatNo">N/A</p>
+                            <p class="col-sm-4 text-end">Flat number:</p>
+                            <p class="col-sm-6" id="flatNo">N/A</p>
                         </div>
                     </div>
                 </form>  
@@ -120,8 +118,8 @@
         </main>
         <footer>
             <div class="container-fluid">
-                <hr class="w-50 mx-auto ">
-                <div class="text-center my-3 text-dark">CopyRight #NETUA2_TP</div>
+                <hr class="w-50 mx-auto">
+                <div class="text-center my-3">CopyRight #NETUA2_TP</div>
             </div>
         </footer>
         <script src="Overview.js" async defer></script>

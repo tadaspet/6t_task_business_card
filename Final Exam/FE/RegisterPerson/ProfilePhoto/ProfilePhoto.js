@@ -113,7 +113,7 @@ window.onload = () => {
     logoutLink.addEventListener('click', (event) =>{
         event.preventDefault();
         sessionStorage.removeItem('User');
-        window.location.href='../../Login/login.html';
+        window.location.href='../../mainIndex.html';
     });
 
     //enable the delete navigation for user.

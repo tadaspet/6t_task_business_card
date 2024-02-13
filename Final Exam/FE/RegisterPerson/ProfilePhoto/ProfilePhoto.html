@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../../BootStrapCSS/bootstrap.css">
-        <link rel="icon" href="../../Images/dotnet-logo.ico" type="Images/x-icon">
+        <link rel="icon" href="../../Images/favicon.ico" type="Images/x-icon">
         <style>
           body {
               background-image: url('../../Images/background.png');
@@ -19,7 +19,7 @@
     </head>
     <body class="bg-primary-subtle">
         <header class="text-center">
-            <h1 class="my-5 text-primary-emphasis">Change Photo</h1>
+            <h1 class="my-5 bs-emphasis-color">Change Photo</h1>
         </header>
         <div class="container-fluid" id="navContainer">
             <nav class="navbar w-50 mx-auto" id="navOffCanvas">
@@ -65,7 +65,6 @@
                     <img class="img-thumbnail rounded mx-auto d-block float-start" alt="defaultPhoto" id="personImage">
                 </div>
             </div>
-            <hr class="mt-5">
           </div>
             <div class="container-fluid text-center">
                 <div class="row justify-content-center">
@@ -78,25 +77,25 @@
             <form class="needs-validation novalidate" id="PersonalPhoto">
                 <div class="container-fluid w-50 p-4">
                     <div class="form-group row mb-2">
-                        <label for="PhotoFile" class="col-sm-4 col-form-label text-end"
-                        data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="File size is maximum 5 MB, and possible extensions jpg/png." required>
+                        <label for="PhotoFile" class="col-sm-4 col-form-label text-end">
                         Profile photo:</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="file" id="PhotoFile" required>
+                            <input class="form-control" type="file" id="PhotoFile" 
+                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="File size is maximum 5 MB, and possible extensions jpg/png." required>
                         </div>
                     </div>
                     <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-primary btn-md" id="saveButtonPersonInfo">Save</button>
+                        <button type="submit" class="btn btn-dark btn-md" id="saveButtonPersonInfo">Save</button>
                     </div>
                 </div>
             </form>
         </main>
         <footer>
           <div class="container-fluid">
-            <hr class="w-50 mx-auto ">
-            <div class="text-center my-3 text-primary-emphasis">CopyRight #NETUA2_TP</div>
+              <hr class="w-50 mx-auto ">
+              <div class="text-center my-3">CopyRight #NETUA2_TP</div>
           </div>
-        </footer>
+      </footer>
         <script src="ProfilePhoto.js" async defer></script>
         <script src="../../BootStrapJS/bootstrap.bundle.js"></script>
     </body>
