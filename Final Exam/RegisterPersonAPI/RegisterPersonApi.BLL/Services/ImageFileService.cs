@@ -46,20 +46,5 @@ namespace RegisterPersonApi.BLL.Services
             }
             return _repository.AddImageFile(imageFile);
         }
-
-        public bool DeleteImageFile(Guid userId)
-        {
-            var image = _repository.GetImageFile(userId);
-            if (image == null)
-            {
-                return false;
-            }
-            var isDeleted = _repository.DeleteImageFile(image.Id);
-            if (!isDeleted)
-            {
-                return false;
-            }
-            return true;
-        }
     }
 }
