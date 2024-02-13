@@ -1,24 +1,21 @@
-﻿using Xunit;
-using RegisterPersonAPI.Mappers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Moq;
 using RegisterPersonApi.BLL.Services.Interfaces;
 using RegisterPersonAPI.DTOs.Requests;
+using System.Text;
+using Xunit;
 
 namespace RegisterPersonAPI.Mappers.Tests
 {
     public class ImageFileMapperTests
     {
         private readonly Mock<IImageFileService> _imageService;
+        private readonly ImageFileMapper _sut;
 
         public ImageFileMapperTests()
         {
             _imageService = new Mock<IImageFileService>();
+            _sut = new ImageFileMapper(_imageService.Object);
         }
 
         [Fact]
@@ -44,10 +41,8 @@ namespace RegisterPersonAPI.Mappers.Tests
 
             _imageService.Setup(s => s.ResizeImage(It.IsAny<MemoryStream>())).Returns(resizedImage);
 
-            var mapper = new ImageFileMapper(_imageService.Object);
-
             // Act
-            var imageFile = mapper.Map(dto, personInfoId);
+            var imageFile = _sut.Map(dto, personInfoId);
 
             // Assert
             Assert.Equal(dto.Image.FileName, imageFile.FileName);

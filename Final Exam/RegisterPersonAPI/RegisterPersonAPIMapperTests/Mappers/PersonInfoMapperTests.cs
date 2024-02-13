@@ -6,6 +6,13 @@ namespace RegisterPersonAPI.Mappers.Tests
 {
     public class PersonInfoMapperTests
     {
+        public readonly PersonInfoMapper _sut;
+
+        public PersonInfoMapperTests()
+        {
+            _sut = new PersonInfoMapper();
+        }
+
         [Fact]
         public void Map_WhenPersonInformationDTO_ReturnPersonInformaiton()
         {
@@ -22,8 +29,7 @@ namespace RegisterPersonAPI.Mappers.Tests
             };
 
             //Act
-            var sut = new PersonInfoMapper();
-            var actual = sut.Map(fakePersonInfoDTO, fakeGuid);
+            var actual = _sut.Map(fakePersonInfoDTO, fakeGuid);
 
             //Assert
             Assert.Equal(fakePersonInfoDTO.Name, actual.Name);
@@ -53,8 +59,7 @@ namespace RegisterPersonAPI.Mappers.Tests
             };
 
             //Act
-            var sut = new PersonInfoMapper();
-            var actual = sut.Map(fakePersonInfo);
+            var actual = _sut.Map(fakePersonInfo);
 
             //Assert
             Assert.Equal(fakePersonInfo.Name, actual.Name);

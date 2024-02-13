@@ -8,10 +8,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../BootStrapCSS/bootstrap.css">
         <link rel="icon" href="../Images/dotnet-logo.ico" type="Images/x-icon">
+        <style>
+            body {
+                background-image: url('../Images/background.png');
+                background-size: cover;
+                height: 100vh;
+            }
+        </style>
     </head>
     <body class="bg-primary-subtle">
         <header class="text-center">
-            <h1 class="my-5 text-primary-emphasis">Sing Up</h1>    
+            <h1 class="my-5 text-dark">Sing Up</h1>    
         </header>
         <main>
             <div class="container-fluid text-center">
@@ -24,7 +31,7 @@
             </div>
             <div id="liveAlertPlaceholder"></div>
             <form id="singupForm">
-                <div class="container-fluid border rounded-5 w-25 border-primary-subtle p-4" id="signupDiv">
+                <div class="container-fluid border rounded-5 w-25 border-dark p-4" id="signupDiv">
                     <div class="form-floating mb-3">
                         <input class="form-control form-control-md" type="text" id="inputUserName" placeholder="Username:" aria-label="Enter user name">
                         <label for="inputUserName" class="form-label">Username:</label>
@@ -38,13 +45,13 @@
                         <label for="inputPassword" class="form-label">Password:</label>
                     </div>
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary btn-md" id="signupButton">Sign-up</button>
+                        <button type="button" class="btn btn-dark btn-md" id="signupButton">Sign-up</button>
                     </div>
                 </div> 
             </form>  
         </main>
         <footer>            
-            <div class="text-center my-5 text-primary-emphasis">CopyRight #NETUA2_TP</div>
+            <div class="text-center my-5 text-dark">CopyRight #NETUA2_TP</div>
         </footer>
         <script src="register.js" async defer></script>
         <script src="../BootStrapJS/bootstrap.bundle.js"></script>

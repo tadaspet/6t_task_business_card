@@ -8,10 +8,12 @@ namespace RegisterPersonApi.BLL.Services.Tests
     public class UsersServiceTests
     {
         private readonly Mock<IUsersRepository> _userRespo;
+        private readonly UsersService _sut;
 
         public UsersServiceTests()
         {
             _userRespo = new Mock<IUsersRepository>();
+            _sut = new UsersService(_userRespo.Object);
         }
 
         [Fact]
@@ -23,10 +25,8 @@ namespace RegisterPersonApi.BLL.Services.Tests
 
             _userRespo.Setup(repo => repo.GetUser(username)).Returns(expectedUser);
 
-            var sut = new UsersService(_userRespo.Object);
-
             // Act
-            var actualUser = sut.UserExists(username);
+            var actualUser = _sut.UserExists(username);
 
             // Assert
             Assert.Equal(expectedUser, actualUser);
@@ -41,10 +41,8 @@ namespace RegisterPersonApi.BLL.Services.Tests
 
             _userRespo.Setup(repo => repo.GetUser(username)).Returns(expectedUser);
 
-            var sut = new UsersService(_userRespo.Object);
-
             // Act
-            var actualUser = sut.UserExists("UserDoesNotExits");
+            var actualUser = _sut.UserExists("UserDoesNotExits");
 
             // Assert
             Assert.NotEqual(expectedUser, actualUser);
@@ -58,10 +56,8 @@ namespace RegisterPersonApi.BLL.Services.Tests
 
             _userRespo.Setup(repo => repo.GetUser(existingUser.Username)).Returns(existingUser);
 
-            var sut = new UsersService(_userRespo.Object);
-
             //Act
-            var result = sut.UserSignUp(existingUser);
+            var result = _sut.UserSignUp(existingUser);
 
             //Assert
             Assert.Equal(Guid.Empty, result);
@@ -77,14 +73,42 @@ namespace RegisterPersonApi.BLL.Services.Tests
             _userRespo.Setup(repo => repo.GetUser(newUser.Username)).Returns((User)null);
             _userRespo.Setup(repo => repo.SaveUser(newUser)).Returns(newUserId);
 
-            var sut = new UsersService(_userRespo.Object);
-
             //Act
-            var result = sut.UserSignUp(newUser);
+            var result = _sut.UserSignUp(newUser);
 
             //Assert
             Assert.Equal(newUserId, result);
 
+        }
+
+        [Fact]
+        public void WhenDeleteUserAndInformation_DeletesUser_ReturnsTrue()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+
+            _userRespo.Setup(x => x.DeleteUserAndAllInformation(userId)).Returns(true);
+
+            // Act
+            var result = _sut.DeleteUserAndInformation(userId);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void WhenDeleteUserAndInformation_DoNotDeleteUser_ReturnsFalse()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+
+            _userRespo.Setup(x => x.DeleteUserAndAllInformation(userId)).Returns(false);
+
+            // Act
+            var result = _sut.DeleteUserAndInformation(userId);
+
+            // Assert
+            Assert.False(result);
         }
 
         [Fact]
@@ -95,11 +119,10 @@ namespace RegisterPersonApi.BLL.Services.Tests
             byte[] passwordHash;
             byte[] passwordSalt;
 
-            var sut = new UsersService(_userRespo.Object);
-            sut.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            _sut.CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
             // Act
-            var result = sut.VerifyPasswordHash(password, passwordHash, passwordSalt);
+            var result = _sut.VerifyPasswordHash(password, passwordHash, passwordSalt);
 
             // Assert
             Assert.True(result);
@@ -114,11 +137,10 @@ namespace RegisterPersonApi.BLL.Services.Tests
             byte[] passwordHash;
             byte[] passwordSalt;
 
-            var sut = new UsersService(_userRespo.Object);
-            sut.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            _sut.CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
             // Act
-            var result = sut.VerifyPasswordHash(wrongPassword, passwordHash, passwordSalt);
+            var result = _sut.VerifyPasswordHash(wrongPassword, passwordHash, passwordSalt);
 
             // Assert
             Assert.False(result);

@@ -1,15 +1,7 @@
-﻿using Xunit;
-using RegisterPersonAPI.Mappers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RegisterPersonAPI.DTOs.Requests;
+﻿using Moq;
 using RegisterPersonApi.BLL.Services.Interfaces;
-using Moq;
-using RegisterPersonApi.DAL.Repositories.Interfaces;
-using RegisterPersonApi.BLL.Services;
+using RegisterPersonAPI.DTOs.Requests;
+using Xunit;
 
 
 namespace RegisterPersonAPI.Mappers.Tests
@@ -17,10 +9,11 @@ namespace RegisterPersonAPI.Mappers.Tests
     public class UserMapperTests
     {
         private readonly Mock<IUsersService> _userService;
-
+        private readonly UserMapper _sut;
         public UserMapperTests()
         {
             _userService = new Mock<IUsersService>();
+            _sut = new UserMapper(_userService.Object);
         }
 
         [Fact]
@@ -40,10 +33,8 @@ namespace RegisterPersonAPI.Mappers.Tests
 
             _userService.Setup(s => s.CreatePasswordHash(dto.Password, out passwordHash, out passwordSalt));
 
-            var mapper = new UserMapper(_userService.Object);
-
             // Act
-            var user = mapper.Map(dto);
+            var user = _sut.Map(dto);
 
             // Assert
             Assert.Equal(dto.UserName, user.Username);

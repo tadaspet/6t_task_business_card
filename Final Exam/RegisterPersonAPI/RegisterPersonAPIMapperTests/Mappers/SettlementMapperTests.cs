@@ -6,6 +6,13 @@ namespace RegisterPersonAPI.Mappers.Tests
 {
     public class SettlementMapperTests
     {
+        private readonly SettlementMapper _sut;
+
+        public SettlementMapperTests()
+        {
+            _sut = new SettlementMapper();
+        }
+
         [Fact]
         public void Map_WhenSettlementRequestDto_ReturnSettlement()
         {
@@ -20,8 +27,7 @@ namespace RegisterPersonAPI.Mappers.Tests
             };
 
             //Act
-            var sut = new SettlementMapper();
-            var actual = sut.Map(fakeSettlementDTO, fakePersonInfoId);
+            var actual = _sut.Map(fakeSettlementDTO, fakePersonInfoId);
 
             //Assert
             Assert.Equal(fakeSettlementDTO.City, actual.City);
@@ -48,8 +54,7 @@ namespace RegisterPersonAPI.Mappers.Tests
             };
 
             //Act
-            var sut = new SettlementMapper();
-            var actual = sut.Map(fakeSettlementEntity);
+            var actual = _sut.Map(fakeSettlementEntity);
 
             //Assert
             Assert.Equal(fakeSettlementEntity.City, actual.City);
