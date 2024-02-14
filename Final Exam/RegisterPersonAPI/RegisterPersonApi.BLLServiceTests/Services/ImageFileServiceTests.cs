@@ -1,15 +1,9 @@
-﻿using Xunit;
-using RegisterPersonApi.BLL.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Moq;
-using RegisterPersonApi.DAL.Repositories.Interfaces;
+﻿using Moq;
 using RegisterPersonApi.DAL.Entities;
-using System.Drawing.Imaging;
+using RegisterPersonApi.DAL.Repositories.Interfaces;
 using System.Drawing;
+using System.Drawing.Imaging;
+using Xunit;
 
 namespace RegisterPersonApi.BLL.Services.Tests
 {

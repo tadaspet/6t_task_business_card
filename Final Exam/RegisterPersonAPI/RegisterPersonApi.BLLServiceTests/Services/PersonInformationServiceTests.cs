@@ -1,5 +1,4 @@
 ﻿using Moq;
-using RegisterPersonApi.BLL.Services.Interfaces;
 using RegisterPersonApi.DAL.Entities;
 using RegisterPersonApi.DAL.Repositories.Interfaces;
 using Xunit;
