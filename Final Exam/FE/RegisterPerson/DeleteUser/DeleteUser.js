@@ -2,6 +2,9 @@ window.onload = () => {
     const userToken = sessionStorage.getItem('User');
     const deleteButton = document.getElementById('deleteUser');
     
+    //turn back User if it has Logged Out
+    hasUserToken();
+
     const decodedToken = JSON.parse(atob(userToken.split(".")[1]));
     addUserName(decodedToken);
     
@@ -9,7 +12,6 @@ window.onload = () => {
         event.preventDefault();
         const inputGUID = document.getElementById('guid').value;
         if (isValidGUID(inputGUID)){
-
         const deleteUserUrl = `https://localhost:7115/api/User/${inputGUID}`;
         fetch(deleteUserUrl,
             {
@@ -120,5 +122,12 @@ window.onload = () => {
     function isValidGUID(guid) {
         const regex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
         return regex.test(guid);
-    }
+    };
+
+    function hasUserToken() {
+        var tokenValue = sessionStorage.getItem('User');
+        if(!tokenValue){
+            window.location.href='../../mainIndex.html';
+        }
+    };
 }

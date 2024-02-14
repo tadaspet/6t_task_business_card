@@ -5,6 +5,9 @@ window.onload = () => {
     const saveButton = document.getElementById('saveButtonSttlement');
     let flatNo = "";
     
+    //turn back User if it has Logged Out
+    hasUserToken();
+
     const decodedToken = JSON.parse(atob(userToken.split(".")[1]));
     addUserName(decodedToken);
 
@@ -239,6 +242,13 @@ window.onload = () => {
         if (userName.length > 0){
             homePageObject.textContent = homepageString;
             homePageObject2.textContent = homepageString;
+        }
+    };
+    
+    function hasUserToken() {
+        var tokenValue = sessionStorage.getItem('User');
+        if(!tokenValue){
+            window.location.href='../../mainIndex.html';
         }
     };
 }

@@ -5,6 +5,9 @@ window.onload = () => {
     const getPersonImageUrl = `https://localhost:7115/api/PersonInformation/DownloadImage`;
     const getPersonSettlementUrl = `https://localhost:7115/api/Settlement`;
     
+    //turn back User if it has Logged Out
+    hasUserToken();
+
     const decodedToken = JSON.parse(atob(userToken.split(".")[1]));
     addUserName(decodedToken);
     
@@ -33,7 +36,7 @@ window.onload = () => {
             const imageUrl = URL.createObjectURL(result[1]);
             currentImage.src = imageUrl;
         } else {
-            currentImage.src = "/Images/defaultprofile.jpg";
+            currentImage.src = "/Images/defaultprofile.png";
         }
     });
 
@@ -155,4 +158,10 @@ window.onload = () => {
         }
     };
 
+    function hasUserToken() {
+        var tokenValue = sessionStorage.getItem('User');
+        if(!tokenValue){
+            window.location.href='../../mainIndex.html';
+        }
+    };
 }

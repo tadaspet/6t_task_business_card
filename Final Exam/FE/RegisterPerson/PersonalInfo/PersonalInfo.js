@@ -9,6 +9,9 @@ window.onload = () => {
     const getPersonInfoUrl = `https://localhost:7115/api/PersonInformation`;
     let userHasInfo = false;
     
+    //turn back User if it has Logged Out
+    hasUserToken();
+
     const decodedToken = JSON.parse(atob(userToken.split(".")[1]));
     addUserName(decodedToken);
 
@@ -274,6 +277,13 @@ window.onload = () => {
         if (userName.length > 0){
             homePageObject.textContent = homepageString;
             homePageObject2.textContent = homepageString;
+        }
+    };
+    
+    function hasUserToken() {
+        var tokenValue = sessionStorage.getItem('User');
+        if(!tokenValue){
+            window.location.href='../../mainIndex.html';
         }
     };
 }

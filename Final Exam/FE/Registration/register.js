@@ -60,9 +60,13 @@ submitButton.addEventListener('click', (event) =>{
         })
         .then(result => {
         })
-        .catch(error => console.log(error.message));
-    
-    })
+        .catch((error) =>{
+            if(error.message.includes('Failed to fetch')){
+                window.location.href='../Errorpage/error.html';
+            }
+            console.log(error.message);
+        });
+    });
 
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
     const appendAlert = (message, type) => {
