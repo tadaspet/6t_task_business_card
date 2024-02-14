@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RegisterPersonApi.BLL.Services.Interfaces;
 using RegisterPersonAPI.DTOs.Requests;
@@ -22,9 +21,9 @@ namespace RegisterPersonAPI.Controllers
         private readonly IPersonInformaitonService _personInfoService;
 
         public SettlementController(
-            ILogger<SettlementController> logger, 
-            ISettlementMapper mapper, 
-            ISettlementService settlementService, 
+            ILogger<SettlementController> logger,
+            ISettlementMapper mapper,
+            ISettlementService settlementService,
             IPersonInformaitonService personInfoService)
         {
             _logger = logger;
@@ -104,7 +103,7 @@ namespace RegisterPersonAPI.Controllers
 
             var dbPersonInfo = _personInfoService.GetPersonalInformation(userGuid);
 
-            if(dbPersonInfo == null)
+            if (dbPersonInfo == null)
             {
                 _logger.LogWarning($"Information not found to complete POST Settlement {userNameIdentifier}.");
                 return NotFound("Person Information not found.");
@@ -154,7 +153,7 @@ namespace RegisterPersonAPI.Controllers
             }
             var dbPersonInfo = _personInfoService.GetPersonalInformation(userGuid);
 
-            if(dbPersonInfo == null)
+            if (dbPersonInfo == null)
             {
                 _logger.LogWarning($"Person Information for {userNameIdentifier} is not found.");
                 return NotFound("Person Information was not found.");

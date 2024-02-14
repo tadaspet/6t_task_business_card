@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RegisterPersonApi.BLL.Services;
 using RegisterPersonApi.BLL.Services.Interfaces;
-using RegisterPersonApi.DAL.Repositories.Interfaces;
 using RegisterPersonAPI.DTOs.Requests;
 using RegisterPersonAPI.DTOs.Results;
 using RegisterPersonAPI.Mappers.Interfaces;
@@ -19,7 +17,7 @@ namespace RegisterPersonAPI.Controllers
     {
         private readonly ILogger<PersonInformationController> _logger;
         private readonly IPersonInfoMapper _mapper;
-        private readonly IPersonInformaitonService _personService;        
+        private readonly IPersonInformaitonService _personService;
         private readonly IImageFileService _imageFileService;
         private readonly IImageFileMapper _imageFileMapper;
 

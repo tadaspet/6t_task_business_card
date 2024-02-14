@@ -25,7 +25,6 @@ namespace RegisterPersonAPI.Mappers.Tests
                 UserName = "TestUserName",
                 Email = "TestEmail",
                 Password = "TestPassword",
-
             };
 
             var passwordHash = new byte[] { 1, 2, 3 };
